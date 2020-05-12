@@ -28,7 +28,12 @@ class ContentNews extends React.Component {
           onSearchChangeText={(text) => this.setState({searchText: text})}
         />
         <ArrowButton />
-        <News data={this.state.searchText} navigation={this.props.navigation} />
+        <News
+          navigation={this.props.navigation}
+          newsCheck={false}
+          data={this.state.searchText}
+          navigation={this.props.navigation}
+        />
       </View>
     );
   }

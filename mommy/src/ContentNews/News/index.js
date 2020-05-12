@@ -22,6 +22,7 @@ class News extends React.Component {
     this.state = {
       items: [],
       heartCheck: false,
+      isRefreshing: false,
     };
   }
 
@@ -34,10 +35,14 @@ class News extends React.Component {
     this.setState({items: data});
   };
   formatData = (item) => {
-    item = item.filter((el) =>
-      el.name.toLowerCase().includes(this.props.data.toLowerCase()),
-    );
-    return item;
+    if (this.props.newsCheck) {
+      item = item.filter((el) =>
+        el.name.toLowerCase().includes(this.props.data.toLowerCase()),
+      );
+      return item;
+    } else {
+      return item;
+    }
   };
   renderItem = ({item}) => {
     return (
@@ -78,6 +83,11 @@ class News extends React.Component {
         </View>
       </View>
     );
+  };
+  onRefresh = () => {
+    this.setState({
+      isRefreshing: true,
+    });
   };
 
   render() {

@@ -9,4 +9,4 @@ import {name as appName} from './app.json';
 import Navigate from './src/ContentNews/Navigate';
 
 // AppRegistry.registerComponent(appName, () => App);
-AppRegistry.registerComponent(appName, () => Form);
+AppRegistry.registerComponent(appName, () => Navigate);

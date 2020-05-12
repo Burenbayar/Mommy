@@ -16,7 +16,7 @@ import {
 } from 'react-native-responsive-screen';
 import TabBar from 'react-native-underline-tabbar';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
-import {SafeAreaView} from 'react-navigation';
+import News from '../News';
 const Tab = ({tab, page, isTabActive, onPressHandler, onTabLayout}) => {
   const {label} = tab;
   const style = {
@@ -32,7 +32,6 @@ const Tab = ({tab, page, isTabActive, onPressHandler, onTabLayout}) => {
     alignItems: 'center',
   };
   const notActive = {
-    backgroundColor: '#F4F4F4',
     paddingHorizontal: wp('3.2%'),
     paddingVertical: wp('2%'),
     flexDirection: 'row',
@@ -51,7 +50,7 @@ const Tab = ({tab, page, isTabActive, onPressHandler, onTabLayout}) => {
     </TouchableOpacity>
   );
 };
-const Page = ({label}) => (
+const Page = (props, {label}) => (
   <View style={styles.containerr}>
     <View>
       <TouchableOpacity>
@@ -67,7 +66,7 @@ const Page = ({label}) => (
     </View>
     <View style={styles.text}>
       <View style={styles.dateName}>
-        <Text style={styles.name}>ddddd</Text>
+        <Text style={styles.name}>{props.name}</Text>
         <Text style={styles.date}>dddd</Text>
       </View>
       <TouchableOpacity style={styles.heart}>
@@ -132,10 +131,15 @@ class SavedNews extends React.Component {
                 )}
               />
             )}>
-            <Page tabLabel={{label: 'Мэдээлэл'}} />
-            <Page tabLabel={{label: 'Эмч'}} />
-            <Page tabLabel={{label: 'Байгууллага'}} />
-            <Page tabLabel={{label: 'Видео'}} />
+            <News
+              newsCheck={false}
+              tabLabel={{label: 'Мэдээлэл'}}
+              name="burne"
+              navigation={this.props.navigation}
+            />
+            <Page tabLabel={{label: 'Эмч'}} name="bat" />
+            <Page tabLabel={{label: 'Байгууллага'}} name="dorj" />
+            <Page tabLabel={{label: 'Видео'}} name="james" />
           </ScrollableTabView>
         </View>
       </View>
