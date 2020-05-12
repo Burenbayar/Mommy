@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, TouchableOpacity, Text} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import Maticon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   widthPercentageToDP as wp,
@@ -39,7 +39,7 @@ const Like = () => {
             <Maticon name="thumb-up" size={12} color="#9E9898" />
           )}
         </TouchableOpacity>
-        <Text style={{color: '#9E9898', marginLeft: wp('2%s'),}}>
+        <Text style={styles.too}>
           {likeCount}
         </Text>
       </View>
@@ -51,7 +51,7 @@ const Like = () => {
             <Maticon name="thumb-down" size={12} color="#9E9898" />
           )}
         </TouchableOpacity>
-        <Text style={{color: '#9E9898', marginLeft: wp('2%'), }}>
+        <Text style={styles.too}>
           {dislikeCount}
         </Text>
       </View>
@@ -59,3 +59,11 @@ const Like = () => {
   );
 };
 export default Like;
+
+const styles = StyleSheet.create({
+  too:{
+    fontSize: 9,
+    color: '#9E9898',
+    marginLeft: wp('2%'),
+  }
+});

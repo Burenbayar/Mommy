@@ -127,18 +127,17 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
   second2:{
-    height: wp('7.4%'),
     flexDirection: 'row',
-    marginTop: wp('-1%')
+    alignItems: 'center',
   },
   second21:{
-    marginLeft: wp('-3%'),
+    marginLeft: wp('-4%'),
     width: wp('25.6%'),
   },
   phone:{
     flexDirection: 'row',
-    marginLeft: wp('22%'),
+    marginLeft: wp('25%'),
     alignItems: 'center',
-    marginTop: wp('-5%')
+    marginTop: wp('-1%')
   }
 });

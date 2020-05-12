@@ -8,5 +8,6 @@ import Form from './src/Form';
 import {name as appName} from './app.json';
 import SpecialNum from './src/Lavlah/SpecialNum';
 import Lavlah from './src/Lavlah/Lavlah';
+import newsComponent from './src/Common/newsComponent';
 
-AppRegistry.registerComponent(appName, () => Lavlah);
+AppRegistry.registerComponent(appName, () => newsComponent);

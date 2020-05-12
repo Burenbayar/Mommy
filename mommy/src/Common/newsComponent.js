@@ -69,13 +69,13 @@ class News extends React.Component {
               <TouchableOpacity onPress={() => this.handleHeart(item.id)
               }>
                 <View>
-                {item.heart ? (<Ionicon name='md-heart' size={16} color='red'/>):(<Ionicon name='md-heart' size={16} color='grey'/>) }
+                {item.heart ? (<Ionicon name='md-heart' size={18} color='red'/>):(<Ionicon name='md-heart' size={18} color='grey'/>) }
                 </View>
                 
               </TouchableOpacity>
             </View>
             <View style={styles.second1mar}>
-              <Maticon name='comment-text' size={16} color="grey" />
+              <Maticon name='comment-text' size={18} color="grey" />
             </View>
             <View style={styles.second1mar}>
               <Text style={styles.second1Text}>
@@ -85,7 +85,7 @@ class News extends React.Component {
           </View>
           <View style={styles.second2}>
             <Like/>
-            <View style={styles.commView}>
+            <View style={styles.dateView}>
               <Text style={styles.second2Text}>
                 {item.date}
               </Text>
@@ -175,13 +175,14 @@ const styles = StyleSheet.create({
   },
   second2:{
     flexDirection: 'row',
-    marginTop: hp('-0.5%')
+    marginTop: hp('-0.2%'),
+    marginLeft: wp('3%')
   },
   second2Text:{
     fontSize: 8,
     marginLeft: wp('3%'),
   },
-  commView:{
-    marginLeft: wp('50%')
+  dateView:{
+    marginLeft: wp('55%')
   },
 });
