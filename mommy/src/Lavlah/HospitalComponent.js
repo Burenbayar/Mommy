@@ -48,7 +48,7 @@ class HospitalComponent extends React.Component {
                 </Text>
               </View>
             </View>
-            <View>
+            <View style={{marginTop: wp('1%')}}>
               <Eicon name='location-pin' size={23} color="grey" />
             </View>
           </View>
@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
   },
   second1:{
     flexDirection: 'row',
+    marginTop: wp('1%')
   },
   second11:{
     width: wp('63.2%'),
@@ -120,16 +121,18 @@ const styles = StyleSheet.create({
   },
   nameText:{
     fontWeight: 'bold',
-    fontSize: 14
+    fontSize: 13
   },
   locText:{
-    fontSize: 9,
+    fontSize: 10,
   },
   second2:{
     height: wp('7.4%'),
     flexDirection: 'row',
+    marginTop: wp('-1%')
   },
   second21:{
+    marginLeft: wp('-3%'),
     width: wp('25.6%'),
   },
   phone:{

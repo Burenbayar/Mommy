@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Text,
+  SafeAreaView,
   FlatList,
 } from 'react-native';
 import newsJson from './newsJson';
@@ -27,8 +28,10 @@ class News extends React.Component {
   componentDidMount() {
     this.setState({items: newsJson});
   }
-  handleHeart = () => {
-    this.setState({heartCheck: !this.state.heartCheck});
+  handleHeart = (itemID) => {
+    let data = this.state.items;
+    data[itemID].heart = !data[itemID].heart;
+    this.setState({items: data});
   };
   formatData = (item) => {
     item = item.filter((el) =>
@@ -57,13 +60,15 @@ class News extends React.Component {
           </TouchableOpacity>
         </View>
         <View style={styles.text}>
-          <View>
+          <View style={styles.dateName}>
             <Text style={styles.name}>{item.name}</Text>
-            <Text>{item.date}</Text>
+            <Text style={styles.date}>{item.date}</Text>
           </View>
-          <TouchableOpacity style={styles.heart} onPress={this.handleHeart}>
+          <TouchableOpacity
+            style={styles.heart}
+            onPress={() => this.handleHeart(item.id)}>
             <View>
-              {this.state.heartCheck ? (
+              {item.heart ? (
                 <Icon name="md-heart" size={25} color="#FA3D5A"></Icon>
               ) : (
                 <Icon name="md-heart" size={25} color="#BEB5B5"></Icon>
@@ -77,13 +82,15 @@ class News extends React.Component {
 
   render() {
     return (
-      <ScrollView>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{height: 1500}}>
         <View>
           <FlatList
             data={this.formatData(this.state.items)}
             renderItem={this.renderItem}
-            maxHeight={3000}
             marginBottom={70}
+            keyExtractor={(item, index) => index.toString()}
           />
         </View>
       </ScrollView>
@@ -101,13 +108,21 @@ const styles = StyleSheet.create({
   },
   text: {
     flexDirection: 'row',
+    marginVertical: 8,
   },
   heart: {
     position: 'absolute',
     right: 10,
   },
   name: {
-    fontSize: 18,
+    fontSize: 14,
     fontFamily: 'Cochin',
+  },
+  date: {
+    fontSize: 10,
+    fontFamily: 'Cochin',
+  },
+  dateName: {
+    marginLeft: 10,
   },
 });

@@ -47,14 +47,14 @@ class SpecialNum extends React.Component {
                 </Text>
               </View>
             </View>
-            <View>
-              <Eicon name='location-pin' size={23} color="grey" />
+            <View style={{marginTop: wp('1%')}}>
+              <Eicon name='location-pin' size={wp('6%')} color="grey" />
             </View>
           </View>
           <View style={styles.second2}>
             <View style={styles.phone}>
-              <Maticon name='phone' size={16} color="grey" />
-              <View style={{marginLeft: wp('2%')}}>
+              <Maticon name='phone' size={wp('6%')} color="grey" />
+              <View style={{marginLeft: wp('1%')}}>
                 <Text style={styles.locText}>
                     {item.tele}
                 </Text>
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   },
   phone:{
     flexDirection: 'row',
-    marginLeft: wp('22%'),
     alignItems: 'center',
+    marginTop: wp('-5%'),
   }
 });

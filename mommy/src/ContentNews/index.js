@@ -23,6 +23,7 @@ class ContentNews extends React.Component {
     return (
       <View style={{backgroundColor: '#F4F4F4'}}>
         <Header
+          navigation={this.props.navigation}
           searchText={this.state.searchText}
           onSearchChangeText={(text) => this.setState({searchText: text})}
         />
