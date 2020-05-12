@@ -25,10 +25,11 @@ class Header extends Component {
       <View style={styles.container}>
         <ImageBackground
           style={{width: '100%', height: hp('31%')}}
-          source={require('../contentImage/headerX.png')}>
+          source={require('../contentImage/header2X.png')}>
           <View style={styles.header}>
-            <TouchableOpacity>
-              <Icon name="md-menu" size={35} color="white"></Icon>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.openDrawer()}>
+              <Icon name="md-menu" size={wp('8.5%')} color="white"></Icon>
             </TouchableOpacity>
             <View style={styles.searchButton}>
               <TextInput
@@ -36,11 +37,17 @@ class Header extends Component {
                 value={this.props.searchText}
                 onChangeText={this.props.onSearchChangeText}></TextInput>
               <TouchableOpacity style={styles.searchIcon}>
-                <Icon name="ios-search" size={25} color="#000000"></Icon>
+                <Icon
+                  name="ios-search"
+                  size={wp('6.5%')}
+                  color="#000000"></Icon>
               </TouchableOpacity>
             </View>
             <TouchableOpacity>
-              <Icon name="ios-notifications" size={30} color="white"></Icon>
+              <Icon
+                name="ios-notifications"
+                size={wp('7%')}
+                color="white"></Icon>
             </TouchableOpacity>
           </View>
         </ImageBackground>
@@ -62,7 +69,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: wp('60%'),
     height: hp('5%'),
-    padding: 1,
     borderRadius: 25,
     flexDirection: 'row',
     marginHorizontal: wp('8%'),
@@ -75,8 +81,11 @@ const styles = StyleSheet.create({
     opacity: 2,
   },
   inputSearch: {
-    fontSize: 20,
+    fontSize: 11,
     color: 'black',
     opacity: 1,
+    marginLeft: hp('2%'),
+    width: wp('45%'),
+    height: hp('5%'),
   },
 });
