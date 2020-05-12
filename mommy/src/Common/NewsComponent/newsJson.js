@@ -1,10 +1,10 @@
 var newsJson = [
     {
       id: 0,
-      Pimage: require('../../images/proPic.png'),
+      Pimage: require('../../../images/proPic.png'),
       name: 'Б.ГАНЧИМЭГ',
       pos: 'Эмэгтэйчүүдийн эмч',
-      Cimage: require('../../images/ContentZurag.png'),
+      Cimage: require('../../../images/ContentZurag.png'),
       title: 'Guide to healthy pregnancy',
       heart: false,
       commentNum: '841',
@@ -14,10 +14,10 @@ var newsJson = [
     },
     {
       id: 1,
-      Pimage: require('../../images/proPic.png'),
+      Pimage: require('../../../images/proPic.png'),
       name: 'tudev',
       pos: 'Эмэгтэйчүүдийн эмч',
-      Cimage: require('../../images/ContentZurag.png'),
+      Cimage: require('../../../images/ContentZurag.png'),
       title: 'Guide to healthy pregnancy',
       heart: false,
       commentNum: '841',
@@ -27,10 +27,10 @@ var newsJson = [
     },
     {
       id: 2,
-      Pimage: require('../../images/proPic.png'),
+      Pimage: require('../../../images/proPic.png'),
       name: 'Б.ГАНЧИМЭГ',
       pos: 'Эмэгтэйчүүдийн эмч',
-      Cimage: require('../../images/ContentZurag.png'),
+      Cimage: require('../../../images/ContentZurag.png'),
       title: 'Guide to healthy pregnancy',
       heart: false,
       commentNum: '841',
