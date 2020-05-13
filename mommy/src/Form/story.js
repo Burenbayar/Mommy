@@ -189,6 +189,7 @@ const styles = StyleSheet.create({
   },
   pro: {
     margin: '4%',
+    marginRight: '2%',
     borderRadius: 50,
     backgroundColor: 'white',
     justifyContent: 'center',

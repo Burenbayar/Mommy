@@ -10,4 +10,4 @@ import SpecialNum from './src/Lavlah/SpecialNum';
 import Lavlah from './src/Lavlah/Lavlah';
 import newsComponent from './src/Common/NewsComponent/newsComponent';
 
-AppRegistry.registerComponent(appName, () => newsComponent);
+AppRegistry.registerComponent(appName, () => Form);

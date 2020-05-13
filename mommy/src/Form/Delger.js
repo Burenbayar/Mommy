@@ -1,9 +1,10 @@
 import React from 'react';
-import {View, StyleSheet, Image, Text, Dimensions} from 'react-native';
+import {View, StyleSheet, ScrollView, Text, Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Pro} from './story';
 import Action from './Action';
 import test from './images/testBack.jpg';
+import Comment from './Comment';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -18,7 +19,7 @@ const obj = require('./DB');
 
 const Delger = (props) => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <DelgerImage />
       <View style={{flex: 1}}>
         {/* <Profile></Profile> */}
@@ -41,15 +42,11 @@ const Delger = (props) => {
         <Text style={{fontSize: wp('3.6%'), marginLeft: 10}}>
           {obj[0].question}
         </Text>
-        <Action pDate="2020.04.01" commentQuantity={841} />
-        {/* <View>
-          <Comment></Comment>
-          <WriteComment></WriteComment>
-        </View> */}
+        <Action pDate="2020.04.01" commentQuantity={81} />
       </View>
       <View
         style={{
-          width: wp('95%'),
+          width: wp('92%'),
           //marginLeft: wp('1%'),
           alignSelf: 'center',
           borderWidth: 1,
@@ -57,7 +54,16 @@ const Delger = (props) => {
           borderColor: '#E2E2E2',
         }}
       />
-    </View>
+      <View style={styles.comm}>
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        {/* <WriteComment></WriteComment> */}
+      </View>
+    </ScrollView>
   );
 };
 
@@ -69,7 +75,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 8,
     overflow: 'hidden',
-    //height: hp('70%'),
+    // height: hp('70%'),
   },
   proContainer: {
     width: wp('95%'),
@@ -85,6 +91,9 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     width: SIZE,
     height: 250,
+  },
+  comm: {
+    // backgroundColor: 'yellow',
   },
 });
 
