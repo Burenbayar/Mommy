@@ -11,7 +11,6 @@ import Story from './story';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const obj = require('./DB');
-const cards = require('./TestDB');
 
 class Category extends Component {
   constructor(props) {

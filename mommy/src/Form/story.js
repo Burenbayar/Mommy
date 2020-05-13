@@ -44,7 +44,7 @@ const MinAgo = (props) => {
     );
   else return <Text style={styles.min}>{timeCal(props.pDate)}</Text>;
 };
-const Pro = (props) => (
+export const Pro = (props) => (
   <View style={styles.pro}>
     <Image source={props.proImage} style={styles.proImage}></Image>
   </View>
