@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {Image, View, StyleSheet, Slider, Text} from 'react-native';
+import {ImageBackground, Image, View, SafeAreaView, Text} from 'react-native';
 import Shop from '../Shop';
 import Person from '../Person';
 import ContentNews from '../../ContentNews';
 import SeeMore from '../SeeMore';
+import SavedNews from '../SavedNews';
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -12,30 +13,18 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {createStackNavigator} from 'react-navigation-stack';
+import {createDrawerNavigator, DrawerItems} from 'react-navigation-drawer';
 
-const HomeStack = createStackNavigator({
-  ContentNews: {
-    screen: ContentNews,
-    navigationOptions: {
-      header: false,
-    },
-  },
-  SeeMore: {
-    screen: SeeMore,
-  },
-});
-
-export const TabNavigator = createBottomTabNavigator(
+const TabNavigator = createBottomTabNavigator(
   {
     Person: {
       screen: Person,
       navigationOptions: {
-        tabBarIcon: ({tintcolor}) => (
+        tabBarIcon: () => (
           <View>
             <Icon
-              style={[{color: tintcolor}]}
+              style={[{color: '#9E9898'}]}
               size={25}
-              color="#707070"
               name={'md-person'}></Icon>
           </View>
         ),
@@ -45,9 +34,9 @@ export const TabNavigator = createBottomTabNavigator(
       },
     },
     ContentNews: {
-      screen: HomeStack,
+      screen: ContentNews,
       navigationOptions: {
-        tabBarIcon: ({tintcolor}) => (
+        tabBarIcon: () => (
           <View
             style={{
               backgroundColor: '#FA3D5A',
@@ -71,12 +60,11 @@ export const TabNavigator = createBottomTabNavigator(
     Shop: {
       screen: Shop,
       navigationOptions: {
-        tabBarIcon: ({tintcolor}) => (
+        tabBarIcon: () => (
           <View>
             <Icon
-              style={[{color: tintcolor}]}
+              style={[{color: '#9E9898'}]}
               size={25}
-              color="#707070"
               name={'ios-cart'}></Icon>
           </View>
         ),
@@ -94,7 +82,71 @@ export const TabNavigator = createBottomTabNavigator(
   },
 );
 
-const AppNavigator = createAppContainer(TabNavigator);
+const DrawerContent = (props) => (
+  <View>
+    <ImageBackground
+      style={{height: hp('25%'), width: wp('70%')}}
+      source={require('../contentImage/child.png')}
+    />
+    <DrawerItems {...props} />
+  </View>
+);
+
+const Drawer = createDrawerNavigator(
+  {
+    Home: {
+      screen: TabNavigator,
+      navigationOptions: {
+        drawerIcon: () => (
+          <View>
+            <Icon
+              style={[{color: '#9E9898'}]}
+              size={25}
+              name={'md-home'}></Icon>
+          </View>
+        ),
+      },
+    },
+    SavedNews: {
+      screen: SavedNews,
+      navigationOptions: {
+        drawerIcon: () => (
+          <View>
+            <Icon
+              style={[{color: '#9E9898'}]}
+              size={25}
+              name={'md-heart'}></Icon>
+          </View>
+        ),
+        drawerLabel: 'Хадгалсан мэдээ',
+      },
+    },
+  },
+  {
+    drawerPosition: 'left',
+    statusBarBackgroundColor: '#FFFFFF',
+    drawerWidth: wp('70%'),
+    contentComponent: DrawerContent,
+  },
+);
+
+const HomeStack = createStackNavigator({
+  Drawer: {
+    screen: Drawer,
+    navigationOptions: {
+      header: false,
+    },
+  },
+
+  SeeMore: {
+    screen: SeeMore,
+    navigationOptions: {
+      header: false,
+    },
+  },
+});
+
+const AppNavigator = createAppContainer(HomeStack);
 export default class Navigate extends Component {
   constructor(props) {
     super(props);

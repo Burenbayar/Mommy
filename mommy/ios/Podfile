@@ -79,6 +79,10 @@ target 'mommy' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'react-native-viewpager', :path => '../node_modules/@react-native-community/viewpager'
+
+  pod 'RNCustomFonts', :path => '../node_modules/react-native-custom-fonts'
+
   target 'mommyTests' do
     inherit! :complete
     # Pods for testing
