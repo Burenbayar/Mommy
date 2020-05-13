@@ -183,6 +183,6 @@ const styles = StyleSheet.create({
     marginLeft: wp('3%'),
   },
   dateView:{
-    marginLeft: wp('55%')
+    marginLeft: wp('56%')
   },
 });

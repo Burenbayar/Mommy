@@ -15,7 +15,7 @@ var newsJson = [
     {
       id: 1,
       Pimage: require('../../../images/proPic.png'),
-      name: 'tudev',
+      name: 'Hello, World!!!',
       pos: 'Эмэгтэйчүүдийн эмч',
       Cimage: require('../../../images/ContentZurag.png'),
       title: 'Guide to healthy pregnancy',
