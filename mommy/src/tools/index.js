@@ -21,7 +21,7 @@ import BeltgelScreen from './beltgel/index';
 import PhotoScreen from './camera/Photo';
 import VideoScreen from './camera/Video';
 import Stopwatch from './stopwatch/stopwatch';
-import { color } from 'react-native-reanimated';
+import jin from './jingiinhynalt/jin'
 
 const Tab = createMaterialTopTabNavigator(
   {
@@ -52,6 +52,9 @@ const MainStack = createStackNavigator(
         tsagScreen: {
           screen: Stopwatch,
         },
+        jinScreen: {
+          screen: jin,
+        }
     },
     {initialRouteName: 'Хэрэгсэл', mode: 'modal'}
 );

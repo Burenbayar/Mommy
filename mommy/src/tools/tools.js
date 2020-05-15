@@ -82,7 +82,7 @@ export default class ToolsScreen extends React.Component {
           <View style={styles.greenView}>
             <TouchableOpacity
               style={styles.button}
-              onPress={() => this.props.navigation.navigate('namesScreen')}>
+              onPress={() => this.props.navigation.navigate('jinScreen')}>
               <Image
                 source={require('./picture/insert_chart-24px.png')}
                 style={styles.Img}
