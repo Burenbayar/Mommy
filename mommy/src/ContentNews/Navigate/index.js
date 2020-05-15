@@ -40,16 +40,14 @@ const TabNavigator = createBottomTabNavigator(
           <View
             style={{
               backgroundColor: '#FA3D5A',
-              width: 50,
-              height: 50,
+              width: wp('14%'),
+              height: wp('14%'),
               justifyContent: 'center',
               alignItems: 'center',
-              borderRadius: 80,
+              borderRadius: wp('14%') / 2,
               marginTop: -5,
             }}>
-            <Image
-              style={{}}
-              source={require('../contentImage/mama_logo.png')}></Image>
+            <Image source={require('../contentImage/mama_logo.png')}></Image>
           </View>
         ),
         tabBarLabel: () => {

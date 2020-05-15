@@ -4,35 +4,35 @@ import {
   StyleSheet,
   ImageBackground,
   TouchableOpacity,
+  TouchableHighlight,
   ScrollView,
   Text,
   SafeAreaView,
   FlatList,
 } from 'react-native';
-import newsJson from './newsJson';
-import CircleWeek from '../CircleWeek';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import Timer from '../Timer';
 class News extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
+      items: this.props.items,
       heartCheck: false,
       isRefreshing: false,
+      second: 0,
     };
-  }
-
-  componentDidMount() {
-    this.setState({items: newsJson});
   }
   handleHeart = (itemID) => {
     let data = this.state.items;
     data[itemID].heart = !data[itemID].heart;
     this.setState({items: data});
+    data[itemID].heart
+      ? this.setState({second: 1})
+      : this.setState({second: 0});
   };
   formatData = (item) => {
     if (this.props.newsCheck) {
@@ -61,7 +61,9 @@ class News extends React.Component {
                 justifyContent: 'flex-start',
               }}
               imageStyle={{borderRadius: 15}}
-              source={item.image}></ImageBackground>
+              source={item.image}>
+              <Timer second={this.state.second} />
+            </ImageBackground>
           </TouchableOpacity>
         </View>
         <View style={styles.text}>
@@ -89,7 +91,6 @@ class News extends React.Component {
       isRefreshing: true,
     });
   };
-
   render() {
     return (
       <ScrollView
