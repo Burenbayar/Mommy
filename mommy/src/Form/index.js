@@ -12,16 +12,30 @@ import Tugeemel from './Tugeemel';
 import Category from './Category';
 import {ScrollView} from 'react-native-gesture-handler';
 import Cards from './Cards';
+import Delger from './Delger';
+import Test from './Test';
 
 class Form extends Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Category title="Нярайн асаргаа" />
+        {/* <Category title="Нярайн асаргаа" />
         <Category title="Эхийн эрүүл мэнд" />
         <Category title="Гэр бүлийн сэтгэл судлал" />
-        <Category title="Нярайн асаргаа" />
+        <Category title="Нярайн асаргаа" /> */}
+        {/* <View
+          style={{
+            width: '100%',
+            height: 80,
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: 'yellow',
+          }}>
+          <Text style={{fontSize: 20}}> Halloo Im on you</Text>
+        </View> */}
 
+        <Delger></Delger>
+        {/* <Test /> */}
         {/* <Cards /> */}
 
         {/* <Tugeemel></Tugeemel> */}
