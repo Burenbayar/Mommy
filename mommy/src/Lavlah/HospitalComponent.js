@@ -22,6 +22,11 @@ class HospitalComponent extends React.Component {
     this.state = {
       items: [],
     };
+    data = {
+      clicked: 0,
+      like: 22,
+      dislike: 23,
+    };
   }
 
   componentDidMount() {
@@ -55,7 +60,7 @@ class HospitalComponent extends React.Component {
           <View style={styles.second2}>
             <View>
               <View style={styles.second21}>
-                <Like/>
+                <Like size={14} info={data}/>
               </View>
             </View>
             <View style={styles.phone}>

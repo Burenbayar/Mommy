@@ -24,7 +24,13 @@ class News extends React.Component {
     this.state = {
       items: [],
     };
+    data = {
+      clicked: 0,
+      like: 22,
+      dislike: 23,
+    };
   }
+  
 
   componentDidMount() {
     this.setState({items: newsJson});
@@ -84,7 +90,7 @@ class News extends React.Component {
             </View>
           </View>
           <View style={styles.second2}>
-            <Like/>
+            <Like size={14} info={data}/>
             <View style={styles.dateView}>
               <Text style={styles.second2Text}>
                 {item.date}
