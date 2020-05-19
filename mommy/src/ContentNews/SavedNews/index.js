@@ -15,12 +15,12 @@ import {
 import TabBar from 'react-native-underline-tabbar';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import News from '../News';
-import NewsComponent from '../../Common/NewsComponent';
+import NewsComponent from '../../Common/NewsComponent/newsComponent';
 import saveJson from './saveJson';
 const Tab = ({tab, page, isTabActive, onPressHandler, onTabLayout}) => {
   const {label} = tab;
   const style = {
-    marginHorizontal: wp('2%'),
+    marginHorizontal: wp('1%'),
     paddingVertical: wp('2%'),
   };
   const active = {
@@ -65,7 +65,7 @@ class SavedNews extends React.Component {
         <View style={styles.header}>
           <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
             <Icon
-              size={wp('7%')}
+              size={wp('8%')}
               name={'ios-arrow-back'}
               color="#9E9898"></Icon>
           </TouchableOpacity>
@@ -119,7 +119,7 @@ class SavedNews extends React.Component {
               tabLabel={{label: 'Мэдээлэл'}}
               navigation={this.props.navigation}
             />
-            <NewsComponent tabLabel={{label: 'Эмч'}} name="bat" />
+            <NewsComponent tabLabel={{label: 'Эмч'}} />
             <News
               items={this.state.items}
               newsCheck={false}

@@ -93,18 +93,14 @@ class News extends React.Component {
   };
   render() {
     return (
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{height: 1500}}>
-        <View>
-          <FlatList
-            data={this.formatData(this.state.items)}
-            renderItem={this.renderItem}
-            marginBottom={70}
-            keyExtractor={(item, index) => index.toString()}
-          />
-        </View>
-      </ScrollView>
+      <View>
+        <FlatList
+          data={this.formatData(this.state.items)}
+          renderItem={this.renderItem}
+          marginBottom={70}
+          keyExtractor={(item, index) => index.toString()}
+        />
+      </View>
     );
   }
 }
@@ -113,7 +109,7 @@ export default News;
 
 const styles = StyleSheet.create({
   container: {
-    margin: wp('2.4%'),
+    margin: wp('2%'),
     backgroundColor: '#FFFFFF',
     borderRadius: 15,
   },

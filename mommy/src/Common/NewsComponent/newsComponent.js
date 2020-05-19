@@ -12,16 +12,12 @@ import newsJson from './newsJson';
 import Eicon from 'react-native-vector-icons/Entypo';
 import Maticon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicon from 'react-native-vector-icons/Ionicons';
-<<<<<<< HEAD:mommy/src/Common/NewsComponent/index.js
 import Like from '../Like';
-=======
-import Like from '../Like'
->>>>>>> bdc7c00669099fe609cef649c46b33a07d634e78:mommy/src/Common/NewsComponent/newsComponent.js
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-
+const data = {clicked: 0, like: 1200, dislike: 1300};
 class NewsComponent extends React.Component {
   constructor() {
     super();
@@ -65,41 +61,25 @@ class NewsComponent extends React.Component {
             <View style={styles.second1mar}>
               <TouchableOpacity onPress={() => this.handleHeart(item.id)}>
                 <View>
-<<<<<<< HEAD:mommy/src/Common/NewsComponent/index.js
                   {item.heart ? (
-                    <Ionicon name="md-heart" size={16} color="red" />
+                    <Ionicon name="md-heart" size={18} color="#FA3D5A" />
                   ) : (
-                    <Ionicon name="md-heart" size={16} color="grey" />
+                    <Ionicon name="md-heart" size={18} color="#9B9191" />
                   )}
-=======
-                {item.heart ? (<Ionicon name='md-heart' size={18} color='red'/>):(<Ionicon name='md-heart' size={18} color='grey'/>) }
->>>>>>> bdc7c00669099fe609cef649c46b33a07d634e78:mommy/src/Common/NewsComponent/newsComponent.js
                 </View>
               </TouchableOpacity>
             </View>
             <View style={styles.second1mar}>
-<<<<<<< HEAD:mommy/src/Common/NewsComponent/index.js
-              <Maticon name="comment-text" size={16} color="grey" />
-=======
-              <Maticon name='comment-text' size={18} color="grey" />
->>>>>>> bdc7c00669099fe609cef649c46b33a07d634e78:mommy/src/Common/NewsComponent/newsComponent.js
+              <Maticon name="comment-text" size={18} color="#9B9191" />
             </View>
             <View style={styles.second1mar}>
               <Text style={styles.second1Text}>{item.commentNum}</Text>
             </View>
           </View>
           <View style={styles.second2}>
-<<<<<<< HEAD:mommy/src/Common/NewsComponent/index.js
-            <Like />
-            <View style={styles.commView}>
+            <Like size={14} info={data} />
+            <View>
               <Text style={styles.second2Text}>{item.date}</Text>
-=======
-            <Like/>
-            <View style={styles.dateView}>
-              <Text style={styles.second2Text}>
-                {item.date}
-              </Text>
->>>>>>> bdc7c00669099fe609cef649c46b33a07d634e78:mommy/src/Common/NewsComponent/newsComponent.js
             </View>
           </View>
         </View>
@@ -186,23 +166,11 @@ const styles = StyleSheet.create({
   },
   second2: {
     flexDirection: 'row',
-<<<<<<< HEAD:mommy/src/Common/NewsComponent/index.js
-    marginTop: hp('-0.5%'),
-=======
-    marginTop: hp('-0.2%'),
-    marginLeft: wp('3%')
->>>>>>> bdc7c00669099fe609cef649c46b33a07d634e78:mommy/src/Common/NewsComponent/newsComponent.js
-  },
-  second2Text: {
-    fontSize: 8,
     marginLeft: wp('3%'),
   },
-<<<<<<< HEAD:mommy/src/Common/NewsComponent/index.js
-  commView: {
-    marginLeft: wp('50%'),
-=======
-  dateView:{
-    marginLeft: wp('55%')
->>>>>>> bdc7c00669099fe609cef649c46b33a07d634e78:mommy/src/Common/NewsComponent/newsComponent.js
+  second2Text: {
+    fontSize: 10,
+    color: '#9E9898',
+    marginLeft: wp('45%'),
   },
 });

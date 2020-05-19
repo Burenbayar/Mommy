@@ -17,63 +17,78 @@ const ArrowButton = (props) => {
   }, [percent]);
 
   return (
-    <View style={styles.container}>
-      <View>
-        <TouchableOpacity
-          onPress={() => {
-            setIndex(index - 1);
-            setPercent((days[index - 1] * 100) / 40);
-          }}
-          style={styles.btn1}>
-          <Icon size={wp('7%')} name={'ios-arrow-back'} color="#9E9898"></Icon>
-          <View style={{width: 80}}>
-            <Text style={styles.day}>{days[index]} Долоо хоног</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-      <View>
-        <View style={styles.container2}>
-          <Svg viewBox="0 0 38 38">
-            <Circle
-              cx="50%"
-              cy="50%"
-              r="46%"
-              fill="transparent"
-              stroke="white"
-              strokeWidth={2.6}
-            />
-            <Circle
-              cx="50%"
-              cy="50%"
-              r="46%"
-              fill="transparent"
-              stroke="#FA3D5A"
-              strokeWidth={2}
-              strokeDasharray={`${percent} ${100 - percent}`}
-              strokeDashoffset="18"
-            />
-            <View style={{alignItems: 'center', paddingTop: wp('8.5%')}}>
-              <Text style={styles.day2}>{days[index + 1]}</Text>
-              <Text style={styles.week}>Долоо хоног</Text>
+    <View style={{flexDirection: 'column'}}>
+      <View style={styles.container}>
+        <View>
+          <TouchableOpacity
+            onPress={() => {
+              setIndex(index - 1);
+              setPercent((days[index - 1] * 100) / 40);
+            }}
+            style={styles.btn1}>
+            <Icon
+              style={{marginLeft: wp('3%')}}
+              size={wp('8%')}
+              name={'ios-arrow-back'}
+              color="#9E9898"></Icon>
+            <View style={styles.weekDay}>
+              <Text style={styles.index}>{days[index]}</Text>
+              <View>
+                <Text style={styles.day}>Долоо хоног</Text>
+              </View>
             </View>
-          </Svg>
+          </TouchableOpacity>
+        </View>
+        <View>
+          <View style={styles.container2}>
+            <Svg viewBox="0 0 35 35">
+              <Circle
+                cx="50%"
+                cy="50%"
+                r="46%"
+                fill="transparent"
+                stroke="white"
+                strokeWidth={2.6}
+              />
+              <Circle
+                cx="50%"
+                cy="50%"
+                r="46%"
+                fill="transparent"
+                stroke="#FA3D5A"
+                strokeWidth={2}
+                strokeDasharray={`${percent} ${100 - percent}`}
+                strokeDashoffset="25"
+              />
+              <View style={{alignItems: 'center', paddingTop: '16%'}}>
+                <Text style={styles.day2}>{days[index + 1]}</Text>
+                <Text style={styles.week}>Долоо хоног</Text>
+              </View>
+            </Svg>
+          </View>
+        </View>
+        <View>
+          <TouchableOpacity
+            onPress={() => {
+              setIndex(index + 1);
+              setPercent((days[index + 1] * 100) / 40);
+            }}
+            style={styles.btn2}>
+            <View style={styles.weekDay}>
+              <Text style={styles.index}>{days[index + 2]}</Text>
+              <View>
+                <Text style={styles.day}>Долоо хоног</Text>
+              </View>
+            </View>
+            <Icon
+              size={wp('8%')}
+              name={'ios-arrow-forward'}
+              color="#9E9898"></Icon>
+          </TouchableOpacity>
         </View>
       </View>
-      <View>
-        <TouchableOpacity
-          onPress={() => {
-            setIndex(index + 1);
-            setPercent((days[index + 1] * 100) / 40);
-          }}
-          style={styles.btn1}>
-          <View style={{width: 80}}>
-            <Text style={styles.day}>{days[index + 2]} Долоо хоног</Text>
-          </View>
-          <Icon
-            size={wp('7%')}
-            name={'ios-arrow-forward'}
-            color="#9E9898"></Icon>
-        </TouchableOpacity>
+      <View style={{marginLeft: wp('4%'), marginTop: wp('-4%')}}>
+        <Text style={styles.week}>{days[index + 1]} долоо хоног</Text>
       </View>
     </View>
   );
@@ -83,39 +98,57 @@ export default ArrowButton;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 6,
-    //backgroundColor: 'green',
+    marginTop: wp('2%'),
     flexDirection: 'row',
-    justifyContent: 'center',
-    marginBottom: 10,
+    marginBottom: wp('3%'),
   },
   btn1: {
-    marginTop: 3,
-    //backgroundColor: 'yellow',
+    marginTop: wp('1%'),
+    // backgroundColor: 'blue',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: wp('25%'),
+  },
+  btn2: {
+    marginTop: wp('1%'),
+    paddingLeft: wp('1%'),
+    // backgroundColor: 'yellow',
     flexDirection: 'row',
     alignItems: 'center',
     width: wp('25%'),
   },
   day: {
     color: '#9E9898',
-    fontSize: wp('3%'),
+    fontSize: wp('2.4%'),
+    // backgroundColor: 'blue',
   },
   container2: {
-    //backgroundColor: 'blue',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: hp('-17%'),
-    width: wp('47%'),
-    height: wp('47%'),
+    marginTop: hp('-18%'),
+    width: wp('50%'),
+    height: wp('50%'),
   },
   day2: {
-    fontSize: 61,
+    fontSize: wp('17%'),
     color: 'white',
     opacity: 0.6,
-    marginBottom: 8,
+    marginBottom: wp('5%'),
   },
   week: {
-    fontSize: 14,
+    fontSize: wp('3.5%'),
     color: '#9E9898',
+    // backgroundColor: 'pink',
+  },
+  index: {
+    fontSize: wp('3.5%'),
+    color: '#9E9898',
+    // backgroundColor: 'red',
+    width: wp('4%'),
+  },
+  weekDay: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: wp('18%'),
   },
 });

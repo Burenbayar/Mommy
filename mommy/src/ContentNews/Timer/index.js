@@ -43,9 +43,9 @@ const Timer = (props) => {
           strokeDashoffset="10"
         />
         <Icon
-          style={{marginHorizontal: 15, marginVertical: 15}}
+          style={{margin: wp('4.7%')}}
           name="md-heart"
-          size={15}
+          size={wp('3%')}
           color="white"></Icon>
       </Svg>
     </View>

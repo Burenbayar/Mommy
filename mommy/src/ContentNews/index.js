@@ -16,7 +16,7 @@ class ContentNews extends React.Component {
     };
   }
   componentDidMount() {
-    for (let index = 1; index < 41; index++) {
+    for (let index = 1; index < 42; index++) {
       this.state.days.push(index);
     }
   }
