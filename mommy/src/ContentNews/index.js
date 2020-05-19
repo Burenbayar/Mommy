@@ -1,24 +1,26 @@
 import React, {Component} from 'react';
-import {
-  Image,
-  View,
-  StyleSheet,
-  Slider,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import newsJson from '../ContentNews/News/newsJson';
+import {View, Text} from 'react-native';
 import Header from './Header';
 import News from './News';
-import Navigate from './Navigate';
 import ArrowButton from './ArrowButton';
-
 class ContentNews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      items: [],
       searchText: '',
+      index: 0,
+      isLoading: false,
+      days: [],
     };
   }
+  componentDidMount() {
+    for (let index = 1; index < 42; index++) {
+      this.state.days.push(index);
+    }
+  }
+
   render() {
     return (
       <View style={{backgroundColor: '#F4F4F4'}}>
@@ -27,8 +29,13 @@ class ContentNews extends React.Component {
           searchText={this.state.searchText}
           onSearchChangeText={(text) => this.setState({searchText: text})}
         />
-        <ArrowButton />
-        <News data={this.state.searchText} navigation={this.props.navigation} />
+        <ArrowButton index={this.state.index} days={this.state.days} />
+        <News
+          navigation={this.props.navigation}
+          newsCheck={true}
+          items={newsJson}
+          data={this.state.searchText}
+        />
       </View>
     );
   }

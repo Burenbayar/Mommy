@@ -5,8 +5,6 @@ import {
   StyleSheet,
   ImageBackground,
   TouchableOpacity,
-  ScrollView,
-  FlatList,
   Text,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -16,7 +14,9 @@ import {
 } from 'react-native-responsive-screen';
 import TabBar from 'react-native-underline-tabbar';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
-import {SafeAreaView} from 'react-navigation';
+import News from '../News';
+import NewsComponent from '../../Common/NewsComponent/newsComponent';
+import saveJson from './saveJson';
 const Tab = ({tab, page, isTabActive, onPressHandler, onTabLayout}) => {
   const {label} = tab;
   const style = {
@@ -32,7 +32,6 @@ const Tab = ({tab, page, isTabActive, onPressHandler, onTabLayout}) => {
     alignItems: 'center',
   };
   const notActive = {
-    backgroundColor: '#F4F4F4',
     paddingHorizontal: wp('3.2%'),
     paddingVertical: wp('2%'),
     flexDirection: 'row',
@@ -51,41 +50,22 @@ const Tab = ({tab, page, isTabActive, onPressHandler, onTabLayout}) => {
     </TouchableOpacity>
   );
 };
-const Page = ({label}) => (
-  <View style={styles.containerr}>
-    <View>
-      <TouchableOpacity>
-        <ImageBackground
-          style={{
-            width: '100%',
-            height: hp('20%'),
-            justifyContent: 'flex-start',
-          }}
-          imageStyle={{borderRadius: 15}}
-          source={require('../contentImage/newsImage.png')}></ImageBackground>
-      </TouchableOpacity>
-    </View>
-    <View style={styles.text}>
-      <View style={styles.dateName}>
-        <Text style={styles.name}>ddddd</Text>
-        <Text style={styles.date}>dddd</Text>
-      </View>
-      <TouchableOpacity style={styles.heart}>
-        <View>
-          <Icon name="md-heart" size={25} color="#FA3D5A"></Icon>
-        </View>
-      </TouchableOpacity>
-    </View>
-  </View>
-);
 class SavedNews extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: saveJson,
+      heartCheck: false,
+      isRefreshing: false,
+    };
+  }
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
             <Icon
-              size={wp('7%')}
+              size={wp('8%')}
               name={'ios-arrow-back'}
               color="#9E9898"></Icon>
           </TouchableOpacity>
@@ -110,6 +90,7 @@ class SavedNews extends React.Component {
             alignItems: 'center',
           }}>
           <ScrollableTabView
+            style={{width: '100%'}}
             tabBarActiveTextColor="#53ac49"
             renderTabBar={() => (
               <TabBar
@@ -132,10 +113,25 @@ class SavedNews extends React.Component {
                 )}
               />
             )}>
-            <Page tabLabel={{label: 'Мэдээлэл'}} />
-            <Page tabLabel={{label: 'Эмч'}} />
-            <Page tabLabel={{label: 'Байгууллага'}} />
-            <Page tabLabel={{label: 'Видео'}} />
+            <News
+              items={this.state.items}
+              newsCheck={false}
+              tabLabel={{label: 'Мэдээлэл'}}
+              navigation={this.props.navigation}
+            />
+            <NewsComponent tabLabel={{label: 'Эмч'}} />
+            <News
+              items={this.state.items}
+              newsCheck={false}
+              tabLabel={{label: 'Байгууллага'}}
+              navigation={this.props.navigation}
+            />
+            <News
+              items={this.state.items}
+              newsCheck={false}
+              tabLabel={{label: 'Видео'}}
+              navigation={this.props.navigation}
+            />
           </ScrollableTabView>
         </View>
       </View>
@@ -149,7 +145,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     marginTop: hp('4%'),
-    marginHorizontal: wp('8%'),
+    marginHorizontal: wp('5%'),
     alignItems: 'center',
   },
   container: {

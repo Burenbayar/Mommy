@@ -1,4 +1,5 @@
 var newsJson = [
+<<<<<<< HEAD
     {
       id: 0,
       Pimage: require('../../../images/proPic.png'),
@@ -38,6 +39,87 @@ var newsJson = [
       dislikeNum: '2562',
       date: '2020.04.02'
     },
+=======
+  {
+    id: 0,
+    Pimage: require('./images/proPic.png'),
+    name: 'Б.ГАНЧИМЭГ',
+    pos: 'Эмэгтэйчүүдийн эмч',
+    Cimage: require('./images/ContentZurag.png'),
+    title: 'Guide to healthy pregnancy',
+    heart: false,
+    commentNum: '841',
+    likeNum: '4341',
+    dislikeNum: '2562',
+    date: '2020.04.02',
+  },
+
+  {
+    id: 1,
+    Pimage: require('./images/proPic.png'),
+    name: 'Б.ГАНЧИМЭГ',
+    pos: 'Эмэгтэйчүүдийн эмч',
+    Cimage: require('./images/ContentZurag.png'),
+    title: 'Guide to healthy pregnancy',
+    heart: false,
+    commentNum: '841',
+    likeNum: '4341',
+    dislikeNum: '2562',
+    date: '2020.04.02',
+  },
+  {
+    id: 2,
+    Pimage: require('./images/proPic.png'),
+    name: 'Б.ГАНЧИМЭГ',
+    pos: 'Эмэгтэйчүүдийн эмч',
+    Cimage: require('./images/ContentZurag.png'),
+    title: 'Guide to healthy pregnancy',
+    heart: false,
+    commentNum: '841',
+    likeNum: '4341',
+    dislikeNum: '2562',
+    date: '2020.04.02',
+  },
+  {
+    id: 3,
+    Pimage: require('./images/proPic.png'),
+    name: 'Б.ГАНЧИМЭГ',
+    pos: 'Эмэгтэйчүүдийн эмч',
+    Cimage: require('./images/ContentZurag.png'),
+    title: 'Guide to healthy pregnancy',
+    heart: false,
+    commentNum: '841',
+    likeNum: '4341',
+    dislikeNum: '2562',
+    date: '2020.04.02',
+  },
+  {
+    id: 4,
+    Pimage: require('./images/proPic.png'),
+    name: 'Б.ГАНЧИМЭГ',
+    pos: 'Эмэгтэйчүүдийн эмч',
+    Cimage: require('./images/ContentZurag.png'),
+    title: 'Guide to healthy pregnancy',
+    heart: false,
+    commentNum: '841',
+    likeNum: '4341',
+    dislikeNum: '2562',
+    date: '2020.04.02',
+  },
+  {
+    id: 5,
+    Pimage: require('./images/proPic.png'),
+    name: 'Б.ГАНЧИМЭГ',
+    pos: 'Эмэгтэйчүүдийн эмч',
+    Cimage: require('./images/ContentZurag.png'),
+    title: 'Guide to healthy pregnancy',
+    heart: false,
+    commentNum: '841',
+    likeNum: '4341',
+    dislikeNum: '2562',
+    date: '2020.04.02',
+  },
+>>>>>>> 80b8868c26f378ad3d3b81f82442872f9925b4ad
 ];
 
-module.exports= newsJson;
+module.exports = newsJson;

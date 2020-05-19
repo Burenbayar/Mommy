@@ -16,7 +16,8 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import Survey from './Survey';
-import Like from './Like';
+import Like from '../../Common/Like';
+const data = {clicked: 0, like: 1200, dislike: 1300};
 class SeeMore extends React.Component {
   constructor(props) {
     super(props);
@@ -33,7 +34,7 @@ class SeeMore extends React.Component {
           <View style={styles.header}>
             <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <Icon
-                size={wp('7%')}
+                size={wp('8%')}
                 name={'ios-arrow-back'}
                 color="white"></Icon>
             </TouchableOpacity>
@@ -52,14 +53,16 @@ class SeeMore extends React.Component {
           showsVerticalScrollIndicator={false}
           style={{
             margin: wp('2.4%'),
-            marginTop: hp('-5%'),
+            marginTop: hp('-25%'),
+            paddingTop: 120,
+            borderRadius: 10,
           }}
-          contentContainerStyle={{height: 900}}>
+          contentContainerStyle={{height: 1200}}>
           <View style={styles.textContainer}>
             <View style={styles.text}>
               <View>
                 <Text style={styles.name}>{this.state.data.name}</Text>
-                <Text style={styles.name}>{this.state.data.date}</Text>
+                <Text style={styles.date}>{this.state.data.date}</Text>
               </View>
               <TouchableOpacity style={styles.dots}>
                 <View>
@@ -75,8 +78,17 @@ class SeeMore extends React.Component {
             </View>
           </View>
           <View style={styles.rateContainer}>
-            <Text style={{color: '#9E9898'}}>Үнэлгээ өгөх</Text>
-            <Like />
+            <Text style={{color: '#9E9898', fontSize: wp('3.5%')}}>
+              Үнэлгээ өгөх
+            </Text>
+            <View
+              style={{
+                alignSelf: 'flex-end',
+                marginLeft: '40%',
+                marginTop: '3%',
+              }}>
+              <Like size={21} info={data} />
+            </View>
           </View>
           <View style={styles.surveyContainer}>
             <Survey />
@@ -85,11 +97,11 @@ class SeeMore extends React.Component {
             <Image
               style={styles.sameImage}
               source={this.state.data.image}></Image>
-            <View style={styles.dateName}>
+            <View style={{flexDirection: 'column'}}>
               <Text style={styles.name}>{this.state.data.name}</Text>
               <Text style={styles.date}>{this.state.data.date}</Text>
               <View style={styles.like}>
-                <Like />
+                <Like size={14} info={data} />
               </View>
             </View>
             <TouchableOpacity
@@ -116,34 +128,35 @@ const styles = StyleSheet.create({
   textContainer: {
     backgroundColor: '#FFFFFF',
     borderRadius: 10,
-    paddingHorizontal: wp('4.8%'),
-    paddingTop: wp('4.8%'),
+    paddingHorizontal: wp('5%'),
+    paddingTop: wp('5%'),
   },
   surveyContainer: {
-    marginTop: wp('2.4%'),
+    marginTop: wp('2.5%'),
     backgroundColor: '#FFFFFF',
     borderRadius: 10,
-    paddingHorizontal: wp('4.8%'),
-    paddingTop: wp('4.8%'),
+    paddingHorizontal: wp('5%'),
+    paddingTop: wp('5%'),
   },
   sameContainer: {
-    marginTop: wp('2.4%'),
+    marginTop: wp('2.5%'),
     backgroundColor: '#FFFFFF',
     borderRadius: 10,
     flexDirection: 'row',
   },
   rateContainer: {
-    marginTop: wp('2.4%'),
+    marginTop: wp('2.5%'),
     backgroundColor: '#FFFFFF',
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: wp('4.8%'),
+    paddingHorizontal: wp('5%'),
+    paddingVertical: wp('2%'),
   },
   header: {
     flexDirection: 'row',
     marginTop: hp('4%'),
-    marginHorizontal: wp('8%'),
+    marginHorizontal: wp('4%'),
   },
   content: {
     marginVertical: wp('4%'),
@@ -157,12 +170,16 @@ const styles = StyleSheet.create({
     marginTop: hp('-2%'),
   },
   name: {
-    fontSize: wp('3.6%'),
+    fontSize: wp('3.5%'),
     fontFamily: 'Cochin',
   },
   heart: {
     position: 'absolute',
     right: 0,
+  },
+  date: {
+    fontSize: wp('3%'),
+    color: '#9E9898',
   },
   sameImage: {
     width: wp('24%'),
@@ -171,8 +188,5 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     margin: wp('1%'),
   },
-  like: {
-    marginLeft: wp('-30%'),
-    marginTop: hp('3%'),
-  },
+  like: {marginTop: '30%', marginLeft: '-35%'},
 });
