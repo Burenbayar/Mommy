@@ -10,4 +10,4 @@ import Tools from './src/tools/tools';
 import FirstScreen from './src/tools/index';
 import but from './src/tools/name/Btton'
 
-AppRegistry.registerComponent(appName, () => but);
+AppRegistry.registerComponent(appName, () => FirstScreen);
