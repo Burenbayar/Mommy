@@ -7,9 +7,9 @@ var newsJson = [
       Cimage: require('../../../images/ContentZurag.png'),
       title: 'Guide to healthy pregnancy',
       heart: false,
-      commentNum: '841',
-      likeNum: '4341',
-      dislikeNum: '2562',
+      commentNum: 841,
+      likeNum: 4341,
+      dislikeNum: 2562,
       date: '2020.04.02'
     },
     {

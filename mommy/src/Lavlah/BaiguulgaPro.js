@@ -21,7 +21,18 @@ class BaiguulgaPro extends React.Component {
     render(){
         <View style={styles.container}>
             <View style={styles.header}>
-              <Image source={}/>
+              <View>
+                <ImageBackground source={image} style={styles.image}>
+                  <View>
+                    <Text style={styles.text}>Өргөө Амаржих газар</Text>
+                  </View>
+                  <View>  
+                    <TouchableOpacity style={styles.bell}>
+                      <Maticon size={wp('6%')} name={'bell'} color="grey"/>
+                    </TouchableOpacity>
+                  </View>
+                </ImageBackground>
+              </View>
             </View>
             <View style={styles.body}>
 

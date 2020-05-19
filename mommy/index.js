@@ -12,4 +12,4 @@ import but from './src/tools/name/Btton'
 import lavlah from './src/Lavlah/Lavlah';
 import News from './src/Common/NewsComponent/newsComponent';
 
-AppRegistry.registerComponent(appName, () => lavlah);
+AppRegistry.registerComponent(appName, () => News);

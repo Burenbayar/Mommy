@@ -82,6 +82,6 @@ const styles = StyleSheet.create({
   too: {
     fontSize: 9,
     color: '#9E9898',
-    marginLeft: wp('2%'),
+    marginLeft: wp('1%'),
   },
 });
