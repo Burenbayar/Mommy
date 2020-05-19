@@ -93,14 +93,18 @@ class News extends React.Component {
   };
   render() {
     return (
-      <View>
-        <FlatList
-          data={this.formatData(this.state.items)}
-          renderItem={this.renderItem}
-          marginBottom={70}
-          keyExtractor={(item, index) => index.toString()}
-        />
-      </View>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{height: 1500}}>
+        <View>
+          <FlatList
+            data={this.formatData(this.state.items)}
+            renderItem={this.renderItem}
+            marginBottom={70}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </View>
+      </ScrollView>
     );
   }
 }
