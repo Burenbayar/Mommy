@@ -21,7 +21,7 @@ class BaiguulgaPro extends React.Component {
     render(){
         <View style={styles.container}>
             <View style={styles.header}>
-              <View>
+              <View style={styles.first}>
                 <ImageBackground source={image} style={styles.image}>
                   <View>
                     <Text style={styles.text}>Өргөө Амаржих газар</Text>
@@ -33,9 +33,20 @@ class BaiguulgaPro extends React.Component {
                   </View>
                 </ImageBackground>
               </View>
-            </View>
-            <View style={styles.body}>
+              <View>
+                <View>
 
+                </View>
+                <View>
+                  
+                </View>
+                <View>
+                  
+                </View>
+              </View>
+            </View>
+            <View style={styles.second}>
+              
             </View>
         </View>
     }

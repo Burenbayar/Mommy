@@ -24,11 +24,6 @@ class NewsComponent extends React.Component {
     this.state = {
       items: [],
     };
-    data = {
-      clicked: 0,
-      like: 22,
-      dislike: 23,
-    };
   }
   
 
@@ -83,17 +78,9 @@ class NewsComponent extends React.Component {
             </View>
           </View>
           <View style={styles.second2}>
-<<<<<<< HEAD
-            <Like size={14} info={data}/>
-            <View style={styles.dateView}>
-              <Text style={styles.second2Text}>
-                {item.date}
-              </Text>
-=======
             <Like size={14} info={data} />
             <View>
               <Text style={styles.second2Text}>{item.date}</Text>
->>>>>>> 80b8868c26f378ad3d3b81f82442872f9925b4ad
             </View>
           </View>
         </View>
@@ -182,14 +169,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginLeft: wp('3%'),
   },
-<<<<<<< HEAD
-  dateView:{
-    marginLeft: wp('56%')
-=======
   second2Text: {
     fontSize: 10,
     color: '#9E9898',
     marginLeft: wp('45%'),
->>>>>>> 80b8868c26f378ad3d3b81f82442872f9925b4ad
   },
 });
