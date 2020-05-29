@@ -29,7 +29,7 @@ const MinAgo = (props) => {
     else if (timeString > 60)
       timeString = `${Math.floor(timeString / 60)}  цаг ${
         timeString % 60
-      } мин өнмө`;
+        } мин өнмө`;
     else if (timeString >= 1) timeString = `${timeString} мин өмнө`;
     else timeString = `${secund} сек өмнө`;
 
@@ -38,7 +38,7 @@ const MinAgo = (props) => {
   if (props.font)
     //End jaaaaahan marginii override shaahal baihdaaa huu
     return (
-      <Text style={[styles.min, {fontSize: props.font}]}>
+      <Text style={[styles.min, { fontSize: props.font }]}>
         {timeCal(props.pDate)}
       </Text>
     );
@@ -56,15 +56,15 @@ const Story = (props) => {
       <View
         style={[
           styles.container,
-          {backgroundColor: 'transarent', margin: '1%'},
+          { backgroundColor: 'transarent', margin: '1%' },
         ]}></View>
     );
   else if (props.mini)
     return (
       <ImageBackground
         source={props.backImage}
-        style={[styles.backImage, {height: hp('25%'), width: wp('30%')}]}
-        imageStyle={{borderRadius: 8}}>
+        style={[styles.backImage, { height: hp('25%'), width: wp('30%') }]}
+        imageStyle={{ borderRadius: 8 }}>
         <View
           style={[
             styles.container,
@@ -90,7 +90,7 @@ const Story = (props) => {
                   padding: '5%',
                   paddingBottom: '0%',
                 }}>
-                <Text style={[styles.title, {fontSize: 14}]}>
+                <Text style={[styles.title, { fontSize: 14 }]}>
                   {props.title}
                 </Text>
               </View>
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     height: hp('35%'),
     width: wp('46%'),
     flex: 1,
-    marginHorizontal: 4,
+    marginRight: 4,
   },
   pro: {
     margin: '4%',
@@ -182,6 +182,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 34,
     height: 34,
+
   },
   proImage: {
     width: 30,
@@ -192,7 +193,7 @@ const styles = StyleSheet.create({
     marginBottom: '1%',
     color: 'white',
   },
-  title: {color: 'white', fontSize: 17},
+  title: { color: 'white', fontSize: 17 },
 });
 
 export default Story;

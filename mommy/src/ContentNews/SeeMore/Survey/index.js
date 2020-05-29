@@ -53,14 +53,14 @@ class Survey extends React.Component {
             style={{
               backgroundColor: '#D9D8D8',
               borderRadius: 15,
-              width: wp('76%'),
-              height: hp('1.3%'),
+              width: wp('75%'),
+              height: wp('2%'),
             }}>
             <View
               style={{
                 backgroundColor: '#FA3D5A',
                 borderRadius: 15,
-                height: hp('1.3%'),
+                height: wp('2%'),
                 width: item.percent,
               }}></View>
           </View>
@@ -73,7 +73,7 @@ class Survey extends React.Component {
   render() {
     return (
       <View>
-        <Text style={{fontSize: wp('3.6%')}}>{this.state.data.question}</Text>
+        <Text style={{fontSize: wp('3.5%')}}>{this.state.data.question}</Text>
         <View>
           <FlatList
             style={styles.container}
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   percentText: {
     color: '#958C8C',
     marginLeft: wp('2%'),
-    fontSize: wp('3.6%'),
+    fontSize: wp('3.5%'),
   },
   check: {
     flexDirection: 'row',
@@ -111,8 +111,8 @@ const styles = StyleSheet.create({
     marginVertical: hp('1%'),
   },
   checkText: {
-    marginLeft: wp('-5%'),
+    marginLeft: wp('-4%'),
     color: '#9E9898',
-    fontSize: wp('3.6%'),
+    fontSize: wp('3.5%'),
   },
 });
