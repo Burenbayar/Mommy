@@ -10,7 +10,7 @@ import {
 import Header from "./Header"
 import InputPost from "./InputPost/inputPost"
 import Post from "./Post"
-import Story from "../../Form/story"
+import Story from "../../Common/story"
 
 class Home extends Component {
     constructor(props) {
