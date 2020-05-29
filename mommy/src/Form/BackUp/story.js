@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -33,7 +33,7 @@ const MinAgo = (props) => {
     else if (timeString >= 1) timeString = `${timeString} мин өмнө`;
     else timeString = `${secund} сек өмнө`;
 
-    return timeString;
+    return timeString + 'Im in Form';
   };
   if (props.font)
     //End jaaaaahan marginii override shaahal baihdaaa huu
@@ -61,7 +61,6 @@ const Story = (props) => {
     );
   else if (props.mini)
     return (
-      // <Text>{props.backImage}</Text>
       <ImageBackground
         source={props.backImage}
         style={[styles.backImage, { height: hp('25%'), width: wp('30%') }]}
@@ -74,19 +73,16 @@ const Story = (props) => {
               overflow: 'hidden',
               height: hp('25%'),
               width: wp('30%'),
-              // height: 180,
-              // width: 120,
             },
           ]}>
           <TouchableNativeFeedback
             useForeground={false}
             background={TouchableNativeFeedback.Ripple('#5F5F5F')}
-            onPress={() => alert(props.userId)}>
+            onPress={() => props.navigation.navigate('Delger')}>
             <View style={styles.container}>
               <Pro proImage={props.proImage}></Pro>
               <View
                 style={{
-                  // backgroundColor: 'purple',
                   flex: 1,
                   width: '60%',
                   alignItems: 'flex-end',
@@ -101,7 +97,6 @@ const Story = (props) => {
 
               <View
                 style={{
-                  // backgroundColor: 'gray',
                   padding: '5%',
                   height: '7%',
                   justifyContent: 'center',
@@ -113,47 +108,47 @@ const Story = (props) => {
         </View>
       </ImageBackground>
     );
-  return (
-    <View style={[styles.containerReal]}>
-      <ImageBackground
-        source={props.backImage}
-        style={styles.backImage}
-        imageStyle={{ borderRadius: 8, height: hp('35%'), width: wp('46%') }}>
-        <View style={[styles.container]}>
-          <TouchableNativeFeedback
-            useForeground={false}
-            background={TouchableNativeFeedback.Ripple('#5F5F5F')}
-            onPress={() => alert('hhe')}>
-            <View style={styles.container}>
-              <Pro proImage={props.proImage}></Pro>
-              <View
-                style={{
-                  // backgroundColor: 'purple',
-                  flex: 1,
-                  // width: '80%',
-                  alignItems: 'flex-end',
-                  flexDirection: 'row',
-                  padding: '5%',
-                  paddingBottom: '0%',
-                }}>
-                <Text style={styles.title}>{props.title}</Text>
-              </View>
+  else
+    return (
+      <View style={[styles.containerReal]}>
+        <ImageBackground
+          source={props.backImage}
+          style={styles.backImage}
+          imageStyle={{borderRadius: 8, height: hp('35%'), width: wp('46%')}}>
+          <View style={[styles.container]}>
+            <TouchableNativeFeedback
+              useForeground={false}
+              background={TouchableNativeFeedback.Ripple('#5F5F5F')}
+              onPress={() => props.nav.navigate('Delger')}>
+              <View style={styles.container}>
+                <Pro proImage={props.proImage}></Pro>
+                <View
+                  style={{
+                    flex: 1,
+                    width: '80%', //maybe
+                    alignItems: 'flex-end',
+                    flexDirection: 'row',
+                    padding: '5%',
+                    paddingBottom: '0%',
+                  }}>
+                  <Text style={styles.title}>{props.title}</Text>
+                </View>
 
-              <View
-                style={{
-                  // backgroundColor: 'gray',
-                  padding: '5%',
-                  height: '7%',
-                  justifyContent: 'center',
-                }}>
-                <MinAgo pDate={props.pDate}></MinAgo>
+                <View
+                  style={{
+                    // backgroundColor: 'gray',
+                    padding: '5%',
+                    height: '7%',
+                    justifyContent: 'center',
+                  }}>
+                  <MinAgo pDate={props.pDate}></MinAgo>
+                </View>
               </View>
-            </View>
-          </TouchableNativeFeedback>
-        </View>
-      </ImageBackground>
-    </View>
-  );
+            </TouchableNativeFeedback>
+          </View>
+        </ImageBackground>
+      </View>
+    );
 };
 
 const styles = StyleSheet.create({
@@ -161,11 +156,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // height: hp('35%'),
-    // width: wp('40%'),
-    // borderRadius: 8,
-    // overflow: 'hidden',
-    //backgroundColor: 'yellow',
     marginBottom: '1.5%',
   },
   container: {
@@ -175,15 +165,11 @@ const styles = StyleSheet.create({
     width: wp('46%'),
     borderRadius: 8,
     overflow: 'hidden',
-    // backgroundColor: 'red',
-    // margin: '1%',
   },
   backImage: {
     // backgroundColor: 'blue',
     height: hp('35%'),
     width: wp('46%'),
-    // borderRadius: 8,
-    // overflow: 'hidden',
     flex: 1,
     marginRight: 4,
   },
