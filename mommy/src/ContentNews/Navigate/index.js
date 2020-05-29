@@ -1,13 +1,23 @@
 import React, {Component} from 'react';
-import {ImageBackground, Image, View, SafeAreaView, Text} from 'react-native';
+import {
+  ImageBackground,
+  Image,
+  View,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import Shop from '../Shop';
 import Person from '../Person';
 import ContentNews from '../../ContentNews';
 import SeeMore from '../SeeMore';
 import SavedNews from '../SavedNews';
+import tools from '../../tools/index';
+import Savenews from '../SavedNews/Savenews';
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Iconn from 'react-native-vector-icons/Entypo';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -106,7 +116,7 @@ const Drawer = createDrawerNavigator(
       },
     },
     SavedNews: {
-      screen: SavedNews,
+      screen: Savenews,
       navigationOptions: {
         drawerIcon: () => (
           <View>
@@ -117,6 +127,20 @@ const Drawer = createDrawerNavigator(
           </View>
         ),
         drawerLabel: 'Хадгалсан мэдээ',
+      },
+    },
+    tools: {
+      screen: tools,
+      navigationOptions: {
+        drawerIcon: () => (
+          <View>
+            <Iconn
+              style={[{color: '#9E9898'}]}
+              size={23}
+              name={'briefcase'}></Iconn>
+          </View>
+        ),
+        drawerLabel: 'Миний хэрэгсэл',
       },
     },
   },
@@ -135,7 +159,6 @@ const HomeStack = createStackNavigator({
       header: false,
     },
   },
-
   SeeMore: {
     screen: SeeMore,
     navigationOptions: {

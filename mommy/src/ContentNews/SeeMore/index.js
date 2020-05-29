@@ -17,7 +17,7 @@ import {
 } from 'react-native-responsive-screen';
 import Survey from './Survey';
 import Like from '../../Common/Like';
-const data = {clicked: 0, like: 1200, dislike: 1300};
+const data = {clicked: 0, like: 1000, dislike: 999};
 class SeeMore extends React.Component {
   constructor(props) {
     super(props);
@@ -51,18 +51,12 @@ class SeeMore extends React.Component {
         </ImageBackground>
         <ScrollView
           showsVerticalScrollIndicator={false}
-          style={{
-            margin: wp('2.4%'),
-            marginTop: hp('-25%'),
-            paddingTop: 120,
-            borderRadius: 10,
-          }}
-          contentContainerStyle={{height: 1200}}>
+          style={styles.scrollView}>
           <View style={styles.textContainer}>
             <View style={styles.text}>
               <View>
-                <Text style={styles.name}>{this.state.data.name}</Text>
-                <Text style={styles.date}>{this.state.data.date}</Text>
+                <Text style={styles.name}>{this.state.data.newsTitle}</Text>
+                <Text style={styles.date}>{this.state.data.newsDate}</Text>
               </View>
               <TouchableOpacity style={styles.dots}>
                 <View>
@@ -74,7 +68,7 @@ class SeeMore extends React.Component {
               </TouchableOpacity>
             </View>
             <View style={styles.content}>
-              <Text style={styles.name}>{this.state.data.content}</Text>
+              <Text style={styles.name}>{this.state.data.newsBody}</Text>
             </View>
           </View>
           <View style={styles.rateContainer}>
@@ -97,24 +91,26 @@ class SeeMore extends React.Component {
             <Image
               style={styles.sameImage}
               source={this.state.data.image}></Image>
-            <View style={{flexDirection: 'column'}}>
-              <Text style={styles.name}>{this.state.data.name}</Text>
-              <Text style={styles.date}>{this.state.data.date}</Text>
-              <View style={styles.like}>
-                <Like size={14} info={data} />
+            <View style={styles.sameContent}>
+              <View style={styles.sameTitle}>
+                <Text style={styles.name}>{this.state.data.newsTitle}</Text>
+                <Text style={styles.date}>{this.state.data.newsDate}</Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}>
+                <View>
+                  <Like size={14} info={data} />
+                </View>
+                <TouchableOpacity style={styles.heart}>
+                  <View>
+                    <Icon name="md-heart" size={25} color="#9B9191"></Icon>
+                  </View>
+                </TouchableOpacity>
               </View>
             </View>
-            <TouchableOpacity
-              style={{
-                alignSelf: 'flex-end',
-                position: 'absolute',
-                right: wp('4%'),
-                bottom: wp('3%'),
-              }}>
-              <View>
-                <Icon name="md-heart" size={25} color="#9B9191"></Icon>
-              </View>
-            </TouchableOpacity>
           </View>
         </ScrollView>
       </View>
@@ -143,6 +139,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 10,
     flexDirection: 'row',
+    height: hp('14%'),
   },
   rateContainer: {
     marginTop: wp('2.5%'),
@@ -176,6 +173,7 @@ const styles = StyleSheet.create({
   heart: {
     position: 'absolute',
     right: 0,
+    alignSelf: 'flex-end',
   },
   date: {
     fontSize: wp('3%'),
@@ -183,10 +181,27 @@ const styles = StyleSheet.create({
   },
   sameImage: {
     width: wp('24%'),
-    height: wp('24%'),
+    height: hp('13%'),
     alignItems: 'center',
     borderRadius: 10,
     margin: wp('1%'),
   },
-  like: {marginTop: '30%', marginLeft: '-35%'},
+  sameTitle: {
+    flexDirection: 'column',
+    paddingTop: '3%',
+    height: '90%',
+    width: '80%',
+  },
+  sameContent: {
+    flexDirection: 'column',
+    // backgroundColor: 'grey',
+    width: '70%',
+    height: '100%',
+  },
+  scrollView: {
+    margin: wp('2.4%'),
+    marginTop: hp('-40%'),
+    paddingTop: 230,
+    borderRadius: 10,
+  },
 });

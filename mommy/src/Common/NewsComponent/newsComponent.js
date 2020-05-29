@@ -95,8 +95,6 @@ class NewsComponent extends React.Component {
             keyExtractor={(item) => item.id}
             data={this.state.items}
             renderItem={this.renderItem}
-            maxHeight={2000}
-            marginBottom={70}
           />
         </View>
       </ScrollView>

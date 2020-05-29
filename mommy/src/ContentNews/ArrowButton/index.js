@@ -11,8 +11,8 @@ const ArrowButton = (props) => {
   const [days, setDays] = useState(props.days);
   const [percent, setPercent] = useState(0);
   useEffect(() => {
-    if (percent < days[index + 1]) {
-      setPercent((days[index + 1] * 100) / 40);
+    if (percent < days[index]) {
+      setPercent((days[index] * 100) / 40);
     }
   }, [percent]);
 
@@ -31,7 +31,7 @@ const ArrowButton = (props) => {
               size={wp('8%')}
               name={'ios-arrow-back'}
               color="#9E9898"></Icon>
-            <View style={styles.weekDay}>
+            <View style={styles.weekDay2}>
               <Text style={styles.index}>{days[index]}</Text>
               <View>
                 <Text style={styles.day}>Долоо хоног</Text>
@@ -138,15 +138,20 @@ const styles = StyleSheet.create({
   week: {
     fontSize: wp('3.5%'),
     color: '#9E9898',
-    // backgroundColor: 'pink',
   },
   index: {
     fontSize: wp('3.5%'),
     color: '#9E9898',
-    // backgroundColor: 'red',
-    width: wp('4%'),
+    marginHorizontal: wp('1%'),
   },
   weekDay: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: wp('18%'),
+    marginLeft: wp('-3%'),
+    marginRight: wp('3%'),
+  },
+  weekDay2: {
     flexDirection: 'row',
     alignItems: 'center',
     width: wp('18%'),

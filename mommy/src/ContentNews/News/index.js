@@ -16,6 +16,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import Timer from '../Timer';
+import SaveModal from '../SaveModal';
 class News extends React.Component {
   constructor(props) {
     super(props);
@@ -37,7 +38,7 @@ class News extends React.Component {
   formatData = (item) => {
     if (this.props.newsCheck) {
       item = item.filter((el) =>
-        el.name.toLowerCase().includes(this.props.data.toLowerCase()),
+        el.newsTitle.toLowerCase().includes(this.props.data.toLowerCase()),
       );
       return item;
     } else {
@@ -46,9 +47,10 @@ class News extends React.Component {
   };
   renderItem = ({item}) => {
     return (
-      <View style={styles.container} key={item.id}>
+      <View style={styles.container} key={item.newsId}>
         <View>
           <TouchableOpacity
+            // disabled={this.props.scroll}
             onPress={() =>
               this.props.navigation.navigate('SeeMore', {
                 data: item,
@@ -68,12 +70,12 @@ class News extends React.Component {
         </View>
         <View style={styles.text}>
           <View style={styles.dateName}>
-            <Text style={styles.name}>{item.name}</Text>
-            <Text style={styles.date}>{item.date}</Text>
+            <Text style={styles.name}>{item.newsTitle}</Text>
+            <Text style={styles.date}>{item.newsDate}</Text>
           </View>
           <TouchableOpacity
             style={styles.heart}
-            onPress={() => this.handleHeart(item.id)}>
+            onPress={() => this.handleHeart(item.newsId)}>
             <View>
               {item.heart ? (
                 <Icon name="md-heart" size={25} color="#FA3D5A"></Icon>
@@ -93,17 +95,15 @@ class News extends React.Component {
   };
   render() {
     return (
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{height: 1500}}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View>
           <FlatList
             data={this.formatData(this.state.items)}
             renderItem={this.renderItem}
-            marginBottom={70}
-            keyExtractor={(item, index) => index.toString()}
+            keyExtractor={(item) => item.newsId}
           />
         </View>
+        <SaveModal />
       </ScrollView>
     );
   }
