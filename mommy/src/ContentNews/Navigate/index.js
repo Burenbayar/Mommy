@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {ImageBackground, Image, View, SafeAreaView, Text} from 'react-native';
 import Shop from '../Shop';
 import Person from '../Person';
-// import Home from '../../Group/Home/home.js';
+import StackNavigation from '../../Form/StackNavigation';
+// import Home from '../../Group/Home/home';
 import ContentNews from '../../ContentNews';
 import SeeMore from '../SeeMore';
 import Savenews from '../SavedNews/Savenews';
@@ -21,7 +22,7 @@ import {createDrawerNavigator, DrawerItems} from 'react-navigation-drawer';
 const TabNavigator = createBottomTabNavigator(
   {
     Person: {
-      screen: Person,
+      screen: StackNavigation,
       navigationOptions: {
         tabBarIcon: () => (
           <View>
