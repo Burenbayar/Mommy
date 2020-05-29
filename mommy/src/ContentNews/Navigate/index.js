@@ -1,19 +1,12 @@
 import React, {Component} from 'react';
-import {
-  ImageBackground,
-  Image,
-  View,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import {ImageBackground, Image, View, SafeAreaView, Text} from 'react-native';
 import Shop from '../Shop';
 import Person from '../Person';
+// import Home from '../../Group/Home/home.js';
 import ContentNews from '../../ContentNews';
 import SeeMore from '../SeeMore';
-import SavedNews from '../SavedNews';
-import tools from '../../tools/index';
 import Savenews from '../SavedNews/Savenews';
+import tools from '../../tools/index';
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -168,6 +161,7 @@ const HomeStack = createStackNavigator({
 });
 
 const AppNavigator = createAppContainer(HomeStack);
+
 export default class Navigate extends Component {
   constructor(props) {
     super(props);

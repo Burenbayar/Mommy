@@ -10,7 +10,7 @@ var saveJson = [
   },
   {
     newsId: 1,
-    newsTitle: 'Medeelel1',
+    newsTitle: 'Medeelel2',
     image: require('../contentImage/newsImage.png'),
     newsDate: '2020.05.20',
     heart: true,
@@ -19,7 +19,7 @@ var saveJson = [
   },
   {
     newsId: 2,
-    newsTitle: 'Medeelel1',
+    newsTitle: 'Medeelel3',
     image: require('../contentImage/newsImage.png'),
     newsDate: '2020.05.20',
     heart: true,
@@ -28,7 +28,7 @@ var saveJson = [
   },
   {
     newsId: 3,
-    newsTitle: 'Medeelel1',
+    newsTitle: 'Medeelel4',
     image: require('../contentImage/newsImage.png'),
     newsDate: '2020.05.20',
     heart: true,
@@ -37,7 +37,7 @@ var saveJson = [
   },
   {
     newsId: 4,
-    newsTitle: 'Medeelel1',
+    newsTitle: 'Medeelel5',
     image: require('../contentImage/newsImage.png'),
     newsDate: '2020.05.20',
     heart: true,

@@ -51,7 +51,8 @@ class SeeMore extends React.Component {
         </ImageBackground>
         <ScrollView
           showsVerticalScrollIndicator={false}
-          style={styles.scrollView}>
+          style={styles.scrollView}
+          contentContainerStyle={{height: 1200}}>
           <View style={styles.textContainer}>
             <View style={styles.text}>
               <View>

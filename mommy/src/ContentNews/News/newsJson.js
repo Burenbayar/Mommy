@@ -20,7 +20,7 @@ var newsJson = [
   {
     newsId: 2,
     newsTitle: 'Captian America',
-    image: require('../contentImage/newsImage.png'),
+    image: require('../contentImage/cap.jpg'),
     newsDate: '2020.05.28',
     heart: false,
     newsBody:
@@ -29,7 +29,7 @@ var newsJson = [
   {
     newsId: 3,
     newsTitle: 'Thor',
-    image: require('../contentImage/newsImage.png'),
+    image: require('../contentImage/thor.jpg'),
     newsDate: '2020.05.29',
     heart: false,
     newsBody:
