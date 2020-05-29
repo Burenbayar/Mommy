@@ -111,6 +111,7 @@ class SavedNews extends React.Component {
           }}>
           <ScrollableTabView
             tabBarActiveTextColor="#53ac49"
+            style={{width: '100%'}}
             renderTabBar={() => (
               <TabBar
                 underlineColor="#F4F4F4"

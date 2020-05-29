@@ -2,15 +2,16 @@ const object = [
   {
     title: 'Жирэмсний хордлогoо яаж арилгах вэ',
     question:
-      'Mongold yaagad hort havdar iim ih bgad bgan be ? bais geel nuur nomiin naizuud min tuslaach iim yumnii hort havdar tiim yumnii hort havdar bolson handiviin dans gesen post haragdah yum ihenhdee yag yuunaas idej uuj bga yumnaasaa yu orchinii bohirdloosyy yag yuunaas bolj ihenhdee ?',
+      'Huushee Mongold yaagad hort havdar iim ih bgad bgan be ? bais geel nuur nomiin naizuud min tuslaach iim yumnii hort havdar tiim yumnii hort havdar bolson handiviin dans gesen post haragdah yum ihenhdee yag yuunaas idej uuj bga yumnaasaa yu orchinii bohirdloosyy yag yuunaas bolj ihenhdee ?',
     commentQuantity: 2,
     userName: 'Ч.пүрэв-очир',
     memberType: 'Гишүүн',
     pDate: new Date(),
     userId: '17b1num1000',
     proImage: require('./images/tomPro.png'),
-    backImage: require('./images/storyBack.png'),
+    backImage: require('./images/testBack.jpg'),
     delgerBack: require('./images/delgerBack.png'),
+    commentQuantity: 123,
   },
   {
     title: 'Eeh boloh uu yaah uu',
@@ -24,6 +25,7 @@ const object = [
     proImage: require('./images/tomPro.png'),
     backImage: require('./images/storyBack.png'),
     delgerBack: require('./images/delgerBack.png'),
+    commentQuantity: 12,
   },
   {
     title: 'Eeh boloh uu yaah uu',
@@ -37,6 +39,7 @@ const object = [
     proImage: require('./images/tomPro.png'),
     backImage: require('./images/storyBack.png'),
     delgerBack: require('./images/delgerBack.png'),
+    commentQuantity: 12389,
   },
   {
     title: 'Eeh boloh uu yaah uu',
@@ -50,6 +53,7 @@ const object = [
     proImage: require('./images/tomPro.png'),
     backImage: require('./images/storyBack.png'),
     delgerBack: require('./images/delgerBack.png'),
+    commentQuantity: 82,
   },
   {
     title: 'Аль эсвэл аав болох уу? ккк',
@@ -63,6 +67,7 @@ const object = [
     proImage: require('./images/tomPro.png'),
     backImage: require('./images/storyBack.png'),
     delgerBack: require('./images/delgerBack.png'),
+    commentQuantity: 456,
   },
   {
     title: 'Eeh boloh uu yaah uu',
@@ -76,6 +81,7 @@ const object = [
     proImage: require('./images/tomPro.png'),
     backImage: require('./images/storyBack.png'),
     delgerBack: require('./images/delgerBack.png'),
+    commentQuantity: 36,
   },
   {
     title: 'Eeh boloh uu yaah uu',
@@ -89,6 +95,7 @@ const object = [
     proImage: require('./images/tomPro.png'),
     backImage: require('./images/storyBack.png'),
     delgerBack: require('./images/delgerBack.png'),
+    commentQuantity: 9,
   },
   {
     title: 'Eeh boloh uu yaah uu',
@@ -102,6 +109,7 @@ const object = [
     proImage: require('./images/tomPro.png'),
     backImage: require('./images/storyBack.png'),
     delgerBack: require('./images/delgerBack.png'),
+    commentQuantity: 11,
   },
   {
     title: 'Eeh boloh uu yaah uu',
@@ -115,6 +123,7 @@ const object = [
     proImage: require('./images/tomPro.png'),
     backImage: require('./images/storyBack.png'),
     delgerBack: require('./images/delgerBack.png'),
+    commentQuantity: 39,
   },
   {
     title: 'Eeh boloh uu yaah uu',
@@ -128,6 +137,7 @@ const object = [
     proImage: require('./images/tomPro.png'),
     backImage: require('./images/storyBack.png'),
     delgerBack: require('./images/delgerBack.png'),
+    commentQuantity: 89,
   },
   {
     title: 'Eeh boloh uu yaah uu',
@@ -141,6 +151,7 @@ const object = [
     proImage: require('./images/tomPro.png'),
     backImage: require('./images/storyBack.png'),
     delgerBack: require('./images/delgerBack.png'),
+    commentQuantity: 92,
   },
   {
     title: 'Eeh boloh uu yaah uu',
@@ -154,6 +165,7 @@ const object = [
     proImage: require('./images/tomPro.png'),
     backImage: require('./images/storyBack.png'),
     delgerBack: require('./images/delgerBack.png'),
+    commentQuantity: 28,
   },
   {
     title: 'Eeh boloh uu yaah uu',
@@ -167,6 +179,7 @@ const object = [
     proImage: require('./images/tomPro.png'),
     backImage: require('./images/storyBack.png'),
     delgerBack: require('./images/delgerBack.png'),
+    commentQuantity: 69,
   },
   {
     title: 'Eeh boloh uu yaah uu',
@@ -180,6 +193,7 @@ const object = [
     proImage: require('./images/tomPro.png'),
     backImage: require('./images/storyBack.png'),
     delgerBack: require('./images/delgerBack.png'),
+    commentQuantity: 85,
   },
   {
     title: 'Eeh boloh uu yaah uu',
@@ -193,6 +207,7 @@ const object = [
     proImage: require('./images/tomPro.png'),
     backImage: require('./images/storyBack.png'),
     delgerBack: require('./images/delgerBack.png'),
+    commentQuantity: 95,
   },
 ];
 // const json = JSON.stringify(object);

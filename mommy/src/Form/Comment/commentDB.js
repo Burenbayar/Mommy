@@ -6,8 +6,11 @@ const object = [
     pDate: new Date(),
     userId: '17b1num1000',
     proImage: require('../images/tomPro.png'),
-    like: 21,
-    dislke: 1,
+    data: {
+      clicked: 0,
+      like: 88,
+      dislike: 2,
+    },
   },
   {
     answer:
@@ -16,8 +19,11 @@ const object = [
     pDate: new Date(),
     userId: '17b1num1001',
     proImage: require('../images/tomPro.png'),
-    like: 21,
-    dislke: 1,
+    data: {
+      clicked: 1,
+      like: 23,
+      dislike: 5,
+    },
   },
   {
     answer: 'Хүчин зүйлс олон байна .',
@@ -25,8 +31,11 @@ const object = [
     pDate: new Date(),
     userId: '17b1num1002',
     proImage: require('../images/tomPro.png'),
-    like: 31,
-    dislke: 1,
+    data: {
+      clicked: 1,
+      like: 210,
+      dislike: 10,
+    },
   },
 ];
 

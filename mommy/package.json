@@ -27,6 +27,7 @@
     "react-native-custom-fonts": "^1.0.5",
     "react-native-elements": "^1.2.7",
     "react-native-gesture-handler": "^1.6.1",
+    "react-native-image-crop-picker": "^0.31.1",
     "react-native-image-zoom-viewer": "^3.0.0",
     "react-native-paper": "^3.8.0",
     "react-native-percentage-circle": "^1.0.7",

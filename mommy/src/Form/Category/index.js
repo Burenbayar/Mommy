@@ -3,14 +3,13 @@ import {
   View,
   StyleSheet,
   FlatList,
-  Image,
   Text,
   TouchableNativeFeedback,
 } from 'react-native';
-import Story from './story';
+import Story from '../../Common/story'; //end oorchil
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const obj = require('./DB');
+const obj = require('../DB');
 
 class Category extends Component {
   constructor(props) {
@@ -19,13 +18,10 @@ class Category extends Component {
   _renderitem(item) {
     return (
       <Story
+        navigation={this.props.navigation}
         mini={true}
-        title={item.title}
-        pDate={item.pDate}
-        proImage={item.proImage}
-        backImage={item.backImage}
-        userId={item.userId}
-        nothing={false}
+        //input={true}
+        items={item}
       />
     );
   }
@@ -34,27 +30,11 @@ class Category extends Component {
       <View style={styles.container}>
         <View style={styles.head}>
           <Text style={styles.text}>{this.props.title.toUpperCase()}</Text>
-          <View
-            style={{
-              overflow: 'hidden',
-              width: 50,
-              height: 26,
-              borderRadius: 10,
-            }}>
+          <View style={styles.moreContainer}>
             <TouchableNativeFeedback
-              onPress={() => alert('byee')}
+              onPress={() => this.props.navigation.navigate('More', {obj: obj})}
               background={TouchableNativeFeedback.Ripple('#5F5F5F')}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  width: 50,
-                  height: 26,
-                  borderRadius: 20,
-                  // backgroundColor: 'yellow',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  marginRight: 5,
-                }}>
+              <View style={styles.more}>
                 <Text style={[styles.text, {fontSize: 10, marginRight: 5}]}>
                   More
                 </Text>
@@ -63,7 +43,6 @@ class Category extends Component {
             </TouchableNativeFeedback>
           </View>
         </View>
-
         <FlatList
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -89,12 +68,30 @@ const styles = StyleSheet.create({
     height: 30,
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingHorizontal: 10,
   },
   text: {
     fontWeight: 'bold',
     fontSize: 12,
     opacity: 0.3,
-    marginLeft: 10,
+    marginLeft: 5,
+  },
+  moreContainer: {
+    overflow: 'hidden',
+    width: 50,
+    height: 26,
+    borderRadius: 10,
+    //backgroundColor: 'red',
+  },
+  more: {
+    flexDirection: 'row',
+    width: 50,
+    height: 26,
+    borderRadius: 20,
+    // backgroundColor: 'yellow',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 5,
   },
 });
 
