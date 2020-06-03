@@ -5,7 +5,8 @@ import {
   ScrollView,
   Text,
   FlatList,
-  Image
+  Image,
+  TouchableOpacity,
 } from 'react-native';
 import HospitalJson from './HospitalJson';
 import Eicon from 'react-native-vector-icons/Entypo';
@@ -14,19 +15,23 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import Call from './Call/call';
 
 class SpecialNum extends React.Component {
   constructor() {
     super();
     this.state = {
       items: [],
+      modalVisible: false,
     };
   }
 
   componentDidMount() {
     this.setState({items: HospitalJson});
   }
-
+  handleModal = () =>{
+    this.setState({modalVisible: !this.state.modalVisible});
+  }
   renderItem = ({item}) => {
     return (
       <View style={styles.container}>
@@ -53,7 +58,9 @@ class SpecialNum extends React.Component {
           </View>
           <View style={styles.second2}>
             <View style={styles.phone}>
-              <Maticon name='phone' size={wp('6%')} color="grey" />
+              <TouchableOpacity onPress={this.handleModal}>
+                <Maticon name='phone' size={wp('6%')} color="grey" />
+              </TouchableOpacity>
               <View style={{marginLeft: wp('1%')}}>
                 <Text style={styles.locText}>
                     {item.tele}
@@ -77,6 +84,7 @@ class SpecialNum extends React.Component {
             marginBottom={70}
           />
         </View>
+        <Call handleModal={this.handleModal} isModalVisible = {this.state.modalVisible}/>
       </ScrollView>
     );
   }
