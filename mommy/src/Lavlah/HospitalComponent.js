@@ -5,8 +5,7 @@ import {
   ScrollView,
   Text,
   FlatList,
-  Image,
-  TouchableOpacity,
+  Image
 } from 'react-native';
 import HospitalJson from './HospitalJson';
 import Eicon from 'react-native-vector-icons/Entypo';
@@ -19,16 +18,11 @@ import {
 import Modal from 'react-native-modal';
 
 class HospitalComponent extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       items: [],
       modalVisible: false,
-    };
-    data = {
-      clicked: 0,
-      like: 22,
-      dislike: 23,
     };
   }
 
@@ -42,9 +36,7 @@ class HospitalComponent extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.first}>
-          <TouchableOpacity onPress={()=> {this.props.navigation.navigate('Profile')}}>
           <Image style={styles.first1} source={item.Pimage}/>
-          </TouchableOpacity>
         </View>
         <View style={styles.second}>
           <View style={styles.second1}>
@@ -67,7 +59,7 @@ class HospitalComponent extends React.Component {
           <View style={styles.second2}>
             <View>
               <View style={styles.second21}>
-                <Like size={14} info={data}/>
+                <Like/>
               </View>
             </View>
             <View style={styles.phone}>

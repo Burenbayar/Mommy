@@ -22,10 +22,10 @@ class Header extends Component {
   render() {
     const {search} = this.state;
     return (
-      <View style={styles.container}>
+      <View>
         <ImageBackground
           style={{width: '100%', height: hp('31%')}}
-          source={require('../contentImage/header2X.png')}>
+          source={require('../contentImage/unnamed.jpg')}>
           <View style={styles.header}>
             <TouchableOpacity
               onPress={() => this.props.navigation.openDrawer()}>

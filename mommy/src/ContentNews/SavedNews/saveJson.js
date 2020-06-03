@@ -1,33 +1,57 @@
 var saveJson = [
   {
-    id: 0,
-    name: 'Medeelel1',
+    newsId: 0,
+    newsTitle: 'Medeelel1',
     image: require('../contentImage/newsImage.png'),
-    date: '2020.04.01',
+    newsDate: '2020.05.20',
     heart: true,
-    circle: require('../contentImage/circleHeart.png'),
-    content:
+    newsBody:
       'Listeria is bacterium (Listeria monocytogenes) that is common in the environment, and is carried by many farm animals and pets.bar Listeria is a bacterium (Listeria monocytogenes) that is common in the environment, and is carried by many farm animals and pets. You can be infected by listeria if you eat contaminated food. Some foods are riskier than others – the riskiest are those eaten raw or inadequately c',
   },
   {
-    id: 1,
-    name: 'Medeelel2',
+    newsId: 1,
+    newsTitle: 'Medeelel2',
     image: require('../contentImage/newsImage.png'),
-    date: '2020.04.02',
+    newsDate: '2020.05.20',
     heart: true,
-    circle: require('../contentImage/circleHeart.png'),
-    content:
-      'Listeria is bacterium (Listeria monocytogenes) that is common in the environment, and is carried by many farm animals and pets.bar ',
+    newsBody:
+      'Listeria is bacterium (Listeria monocytogenes) that is common in the environment, and is carried by many farm animals and pets.bar Listeria is a bacterium (Listeria monocytogenes) that is common in the environment, and is carried by many farm animals and pets. You can be infected by listeria if you eat contaminated food. Some foods are riskier than others – the riskiest are those eaten raw or inadequately c',
   },
   {
-    id: 2,
-    name: 'Medeelel3',
+    newsId: 2,
+    newsTitle: 'Medeelel3',
     image: require('../contentImage/newsImage.png'),
-    date: '2020.04.02',
+    newsDate: '2020.05.20',
     heart: true,
-    circle: require('../contentImage/circleHeart.png'),
-    content:
-      'Listeria is bacterium (Listeria monocytogenes) that is common in the environment, and is carried by many farm animals and pets.bar ',
+    newsBody:
+      'Listeria is bacterium (Listeria monocytogenes) that is common in the environment, and is carried by many farm animals and pets.bar Listeria is a bacterium (Listeria monocytogenes) that is common in the environment, and is carried by many farm animals and pets. You can be infected by listeria if you eat contaminated food. Some foods are riskier than others – the riskiest are those eaten raw or inadequately c',
+  },
+  {
+    newsId: 3,
+    newsTitle: 'Medeelel4',
+    image: require('../contentImage/newsImage.png'),
+    newsDate: '2020.05.20',
+    heart: true,
+    newsBody:
+      'Listeria is bacterium (Listeria monocytogenes) that is common in the environment, and is carried by many farm animals and pets.bar Listeria is a bacterium (Listeria monocytogenes) that is common in the environment, and is carried by many farm animals and pets. You can be infected by listeria if you eat contaminated food. Some foods are riskier than others – the riskiest are those eaten raw or inadequately c',
+  },
+  {
+    newsId: 4,
+    newsTitle: 'Medeelel5',
+    image: require('../contentImage/newsImage.png'),
+    newsDate: '2020.05.20',
+    heart: true,
+    newsBody:
+      'Listeria is bacterium (Listeria monocytogenes) that is common in the environment, and is carried by many farm animals and pets.bar Listeria is a bacterium (Listeria monocytogenes) that is common in the environment, and is carried by many farm animals and pets. You can be infected by listeria if you eat contaminated food. Some foods are riskier than others – the riskiest are those eaten raw or inadequately c',
+  },
+  {
+    newsId: 5,
+    newsTitle: 'Medeelel1',
+    image: require('../contentImage/newsImage.png'),
+    newsDate: '2020.05.20',
+    heart: true,
+    newsBody:
+      'Listeria is bacterium (Listeria monocytogenes) that is common in the environment, and is carried by many farm animals and pets.bar Listeria is a bacterium (Listeria monocytogenes) that is common in the environment, and is carried by many farm animals and pets. You can be infected by listeria if you eat contaminated food. Some foods are riskier than others – the riskiest are those eaten raw or inadequately c',
   },
 ];
 module.exports = saveJson;

@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {Pro} from '../story';
+import {Pro} from '../BackUp/story';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -11,21 +10,20 @@ import Like from '../../Common/Like';
 const db = require('./commentDB');
 
 const data = {
-  clicked: 0,
-  like: 32,
-  dislike: 22,
+  clicked: 0, // 0 =no clicked, -1 , 1 liked
+  like: 88,
+  dislike: 2,
 };
 
 const Comment = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.proView}>
-        <Pro proImage={db[0].proImage} />
+        <Pro proImage={props.proImage} />
       </View>
-
       <View style={styles.textContainer}>
-        <Text style={styles.name}>{db[0].userName}</Text>
-        <Text style={styles.answer}>{db[1].answer}</Text>
+        <Text style={styles.name}>{props.userName}</Text>
+        <Text style={styles.answer}>{props.answer}</Text>
         <View
           style={{
             marginTop: 10,
@@ -36,7 +34,7 @@ const Comment = (props) => {
             justifyContent: 'flex-start',
             flex: 1,
           }}>
-          <Like size={14} info={data} />
+          <Like size={14} info={props.data} />
         </View>
       </View>
     </View>

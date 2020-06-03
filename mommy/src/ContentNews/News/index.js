@@ -16,6 +16,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import Timer from '../Timer';
+import SaveModal from '../SaveModal';
 class News extends React.Component {
   constructor(props) {
     super(props);
@@ -23,32 +24,40 @@ class News extends React.Component {
       items: this.props.items,
       heartCheck: false,
       isRefreshing: false,
-      second: 0,
+      modalVisible: false,
     };
   }
   handleHeart = (itemID) => {
     let data = this.state.items;
     data[itemID].heart = !data[itemID].heart;
     this.setState({items: data});
+    this.state.heartCheck = data[itemID].heart;
     data[itemID].heart
       ? this.setState({second: 1})
       : this.setState({second: 0});
+    this.handleModal();
   };
   formatData = (item) => {
     if (this.props.newsCheck) {
       item = item.filter((el) =>
-        el.name.toLowerCase().includes(this.props.data.toLowerCase()),
+        el.newsTitle.toLowerCase().includes(this.props.data.toLowerCase()),
       );
       return item;
     } else {
       return item;
     }
   };
+  handleModal = () => {
+    this.state.heartCheck
+      ? this.setState({modalVisible: !this.state.modalVisible})
+      : this.setState({modalVisible: this.state.modalVisible});
+  };
   renderItem = ({item}) => {
     return (
-      <View style={styles.container} key={item.id}>
+      <View style={styles.container} key={item.newsId}>
         <View>
           <TouchableOpacity
+            // disabled={this.props.scroll}
             onPress={() =>
               this.props.navigation.navigate('SeeMore', {
                 data: item,
@@ -57,7 +66,7 @@ class News extends React.Component {
             <ImageBackground
               style={{
                 width: '100%',
-                height: hp('20%'),
+                height: hp('28%'),
                 justifyContent: 'flex-start',
               }}
               imageStyle={{borderRadius: 15}}
@@ -68,12 +77,12 @@ class News extends React.Component {
         </View>
         <View style={styles.text}>
           <View style={styles.dateName}>
-            <Text style={styles.name}>{item.name}</Text>
-            <Text style={styles.date}>{item.date}</Text>
+            <Text style={styles.name}>{item.newsTitle}</Text>
+            <Text style={styles.date}>{item.newsDate}</Text>
           </View>
           <TouchableOpacity
             style={styles.heart}
-            onPress={() => this.handleHeart(item.id)}>
+            onPress={() => this.handleHeart(item.newsId)}>
             <View>
               {item.heart ? (
                 <Icon name="md-heart" size={25} color="#FA3D5A"></Icon>
@@ -93,14 +102,19 @@ class News extends React.Component {
   };
   render() {
     return (
-      <View>
-        <FlatList
-          data={this.formatData(this.state.items)}
-          renderItem={this.renderItem}
-          marginBottom={70}
-          keyExtractor={(item, index) => index.toString()}
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View>
+          <FlatList
+            data={this.formatData(this.state.items)}
+            renderItem={this.renderItem}
+            keyExtractor={(item) => item.newsId}
+          />
+        </View>
+        <SaveModal
+          handleModal={this.handleModal}
+          isModalVisible={this.state.modalVisible}
         />
-      </View>
+      </ScrollView>
     );
   }
 }

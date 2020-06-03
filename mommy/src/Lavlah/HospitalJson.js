@@ -1,6 +1,6 @@
 var HospitalJson = [
     {
-      Pimage: require('../Common/NewsComponent/images/proPic.png'),
+      Pimage: require('../../images/proPic.png'),
       name: 'ӨРГӨӨ АМАРЖИХ ГАЗАР',
       loc: 'Улаанбаатар хот СБДүүрэг 6-р хороо, ӨРГӨӨ эмэгтэйчүүдын эмнэлэг',
       likeNum: '4341',

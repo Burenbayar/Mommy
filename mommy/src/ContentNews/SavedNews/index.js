@@ -57,8 +57,13 @@ class SavedNews extends React.Component {
       items: saveJson,
       heartCheck: false,
       isRefreshing: false,
+      scroll: false,
     };
   }
+  scrollHandle = () => {
+    this.setState({scroll: !this.state.scroll});
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -90,8 +95,10 @@ class SavedNews extends React.Component {
             alignItems: 'center',
           }}>
           <ScrollableTabView
+            // onScroll={this.scrollHandle}
             style={{width: '100%'}}
             tabBarActiveTextColor="#53ac49"
+            style={{width: '100%'}}
             renderTabBar={() => (
               <TabBar
                 underlineColor="#F4F4F4"
