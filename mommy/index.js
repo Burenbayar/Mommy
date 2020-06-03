@@ -8,5 +8,6 @@ import News from './src/Common/NewsComponent/newsComponent';
 import HospitalInfo from './src/Lavlah/HospitalInfo';
 import Lavlah from './src/Lavlah/Lavlah/Lavlah';
 import test from './src/Lavlah/test';
+import Navigate from './src/ContentNews/Navigate';
 
-AppRegistry.registerComponent(appName, () => test);
+AppRegistry.registerComponent(appName, () => Navigate);
