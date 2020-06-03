@@ -14,6 +14,8 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import Modal from './Call/call';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class SpecialNum extends React.Component {
   constructor() {
@@ -53,7 +55,9 @@ class SpecialNum extends React.Component {
           </View>
           <View style={styles.second2}>
             <View style={styles.phone}>
-              <Maticon name='phone' size={wp('6%')} color="grey" />
+              <TouchableOpacity onPress={Modal}>
+                <Maticon name='phone' size={wp('6%')} color="grey" />
+              </TouchableOpacity>
               <View style={{marginLeft: wp('1%')}}>
                 <Text style={styles.locText}>
                     {item.tele}
