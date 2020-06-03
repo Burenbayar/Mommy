@@ -18,7 +18,7 @@ import {
 } from 'react-native-responsive-screen';
 import Survey from './Survey';
 import Like from '../../Common/Like';
-const data = {clicked: 0, like: 1000, dislike: 999};
+const data = {clicked: 0, like: 0, dislike: 0};
 const Header_Maximum_Height = 200;
 
 const Header_Minimum_Height = 50;
@@ -30,6 +30,8 @@ export default class SeeMore extends Component {
       data: this.props.navigation.getParam('data'),
     };
     this.AnimatedHeaderValue = new Animated.Value(0);
+    data.like = this.state.data.newsLike;
+    data.dislike = this.state.data.newsDislike;
   }
 
   render() {

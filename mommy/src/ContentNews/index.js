@@ -11,7 +11,7 @@ class ContentNews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
+      items: newsJson,
       searchText: '',
       index: 0,
       isLoading: false,
@@ -22,7 +22,7 @@ class ContentNews extends React.Component {
     for (let index = 1; index < 42; index++) {
       this.state.days.push(index);
     }
-    fetch('https://jsonplaceholder.typicode.com/users#')
+    fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => response.json())
       .then((json) => {
         console.warn(json);
