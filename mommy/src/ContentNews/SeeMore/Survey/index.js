@@ -97,12 +97,14 @@ const styles = StyleSheet.create({
   },
   percentText: {
     color: '#958C8C',
-    marginLeft: wp('2%'),
+    position: 'absolute',
+    right: 0,
     fontSize: wp('3.5%'),
   },
   check: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 5,
   },
   container: {
     marginVertical: hp('2%'),
@@ -111,7 +113,6 @@ const styles = StyleSheet.create({
     marginVertical: hp('1%'),
   },
   checkText: {
-    marginLeft: wp('-4%'),
     color: '#9E9898',
     fontSize: wp('3.5%'),
   },

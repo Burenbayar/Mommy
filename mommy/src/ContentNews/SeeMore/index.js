@@ -4,13 +4,14 @@ import {
   StyleSheet,
   ImageBackground,
   TouchableOpacity,
+  Platform,
   ScrollView,
   Text,
   Image,
+  Animated,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import IconDot from 'react-native-vector-icons/Entypo';
-import Maticon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -18,41 +19,48 @@ import {
 import Survey from './Survey';
 import Like from '../../Common/Like';
 const data = {clicked: 0, like: 1000, dislike: 999};
-class SeeMore extends React.Component {
+const Header_Maximum_Height = 200;
+
+const Header_Minimum_Height = 50;
+const HEADER_SCROLL_DISTANCE = Header_Maximum_Height - Header_Minimum_Height;
+export default class SeeMore extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: this.props.navigation.getParam('data'),
     };
+    this.AnimatedHeaderValue = new Animated.Value(0);
   }
+
   render() {
+    const imageOpacity = this.AnimatedHeaderValue.interpolate({
+      inputRange: [0, HEADER_SCROLL_DISTANCE / 2, HEADER_SCROLL_DISTANCE],
+      outputRange: [1, 1, 0],
+      extrapolate: 'clamp',
+    });
+    const imageTranslate = this.AnimatedHeaderValue.interpolate({
+      inputRange: [0, HEADER_SCROLL_DISTANCE],
+      outputRange: [0, -50],
+      extrapolate: 'clamp',
+    });
+    const AnimateHeaderHeight = this.AnimatedHeaderValue.interpolate({
+      inputRange: [0, Header_Maximum_Height - Header_Minimum_Height],
+
+      outputRange: [Header_Maximum_Height, Header_Minimum_Height],
+
+      extrapolate: 'clamp',
+    });
+
     return (
-      <View>
-        <ImageBackground
-          style={{width: '100%', height: hp('31%')}}
-          source={this.state.data.image}>
-          <View style={styles.header}>
-            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-              <Icon
-                size={wp('8%')}
-                name={'ios-arrow-back'}
-                color="white"></Icon>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.heart}>
-              <View>
-                {this.state.data.heart ? (
-                  <Icon name="md-heart" size={wp('7%')} color="#FA3D5A"></Icon>
-                ) : (
-                  <Icon name="md-heart" size={wp('7%')} color="#9B9191"></Icon>
-                )}
-              </View>
-            </TouchableOpacity>
-          </View>
-        </ImageBackground>
+      <View style={styles.MainContainer}>
         <ScrollView
+          style={{margin: wp('2%'), flex: 1}}
+          scrollEventThrottle={16}
           showsVerticalScrollIndicator={false}
-          style={styles.scrollView}
-          contentContainerStyle={{height: 1200}}>
+          contentContainerStyle={{paddingTop: Header_Maximum_Height}}
+          onScroll={Animated.event([
+            {nativeEvent: {contentOffset: {y: this.AnimatedHeaderValue}}},
+          ])}>
           <View style={styles.textContainer}>
             <View style={styles.text}>
               <View>
@@ -78,9 +86,10 @@ class SeeMore extends React.Component {
             </Text>
             <View
               style={{
-                alignSelf: 'flex-end',
-                marginLeft: '40%',
-                marginTop: '3%',
+                alignItems: 'flex-end',
+                position: 'absolute',
+                right: 10,
+                top: '50%',
               }}>
               <Like size={21} info={data} />
             </View>
@@ -114,14 +123,68 @@ class SeeMore extends React.Component {
             </View>
           </View>
         </ScrollView>
+
+        <Animated.View
+          style={[
+            styles.HeaderStyle,
+            {
+              height: AnimateHeaderHeight,
+            },
+          ]}>
+          <Animated.Image
+            style={[
+              styles.backgroundImage,
+              {
+                opacity: imageOpacity,
+                transform: [{translateY: imageTranslate}],
+              },
+            ]}
+            source={this.state.data.image}
+          />
+          <Animated.View style={styles.header2}>
+            <View style={styles.header}>
+              <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+                <Icon
+                  size={wp('9%')}
+                  name={'ios-arrow-back'}
+                  color="white"></Icon>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.heart}>
+                <View>
+                  {this.state.data.heart ? (
+                    <Icon
+                      name="md-heart"
+                      size={wp('8%')}
+                      color="#FA3D5A"></Icon>
+                  ) : (
+                    <Icon
+                      name="md-heart"
+                      size={wp('8%')}
+                      color="#9B9191"></Icon>
+                  )}
+                </View>
+              </TouchableOpacity>
+            </View>
+          </Animated.View>
+        </Animated.View>
       </View>
     );
   }
 }
 
-export default SeeMore;
-
 const styles = StyleSheet.create({
+  MainContainer: {
+    flex: 1,
+    paddingTop: Platform.OS == 'ios' ? 20 : 0,
+  },
+  HeaderStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: Platform.OS == 'ios' ? 20 : 0,
+  },
   textContainer: {
     backgroundColor: '#FFFFFF',
     borderRadius: 10,
@@ -153,8 +216,8 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    marginTop: hp('4%'),
     marginHorizontal: wp('4%'),
+    marginTop: 18,
   },
   content: {
     marginVertical: wp('4%'),
@@ -199,10 +262,21 @@ const styles = StyleSheet.create({
     width: '70%',
     height: '100%',
   },
-  scrollView: {
-    margin: wp('2.4%'),
-    marginTop: hp('-40%'),
-    paddingTop: 230,
-    borderRadius: 10,
+  header2: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'transparent',
+    // overflow: 'hidden',
+  },
+  backgroundImage: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    width: null,
+    height: Header_Maximum_Height,
+    resizeMode: 'cover',
   },
 });

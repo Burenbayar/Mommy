@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import newsJson from '../ContentNews/News/newsJson';
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView, Animated} from 'react-native';
 import Header from './Header';
 import News from './News';
 import ArrowButton from './ArrowButton';
 import SaveModal from './SaveModal';
 import axios from 'axios';
+
 class ContentNews extends React.Component {
   constructor(props) {
     super(props);
@@ -25,8 +26,16 @@ class ContentNews extends React.Component {
       .then((response) => response.json())
       .then((json) => {
         console.warn(json);
-        this.setState({items: json});
+      })
+      .catch(function (error) {
+        console.log(
+          'There has been a problem with your fetch operation: ' +
+            error.message,
+        );
+        // ADD THIS THROW error
+        throw error;
       });
+
     // this.getApiData();
   }
   // async getApiData() {
@@ -40,25 +49,27 @@ class ContentNews extends React.Component {
   // }
   render() {
     return (
-      <View style={{backgroundColor: '#F4F4F4', flex: 1}}>
-        <Header
-          navigation={this.props.navigation}
-          searchText={this.state.searchText}
-          onSearchChangeText={(text) => this.setState({searchText: text})}
-        />
-        <View>
-          {this.state.items.map((item) => (
-            <Text>{item.name}</Text>
-          ))}
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={{backgroundColor: '#F4F4F4', flex: 1}}>
+          <Header
+            navigation={this.props.navigation}
+            searchText={this.state.searchText}
+            onSearchChangeText={(text) => this.setState({searchText: text})}
+          />
+          {/* <View>
+            {this.state.items.map((e) => {
+              <Text>{e.name}</Text>;
+            })}
+          </View> */}
+          <ArrowButton index={this.state.index} days={this.state.days} />
+          <News
+            navigation={this.props.navigation}
+            newsCheck={true}
+            items={newsJson}
+            data={this.state.searchText}
+          />
         </View>
-        <ArrowButton index={this.state.index} days={this.state.days} />
-        <News
-          navigation={this.props.navigation}
-          newsCheck={true}
-          items={newsJson}
-          data={this.state.searchText}
-        />
-      </View>
+      </ScrollView>
     );
   }
 }

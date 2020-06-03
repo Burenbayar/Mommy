@@ -24,16 +24,18 @@ class News extends React.Component {
       items: this.props.items,
       heartCheck: false,
       isRefreshing: false,
-      second: 0,
+      modalVisible: false,
     };
   }
   handleHeart = (itemID) => {
     let data = this.state.items;
     data[itemID].heart = !data[itemID].heart;
     this.setState({items: data});
+    this.state.heartCheck = data[itemID].heart;
     data[itemID].heart
       ? this.setState({second: 1})
       : this.setState({second: 0});
+    this.handleModal();
   };
   formatData = (item) => {
     if (this.props.newsCheck) {
@@ -44,6 +46,11 @@ class News extends React.Component {
     } else {
       return item;
     }
+  };
+  handleModal = () => {
+    this.state.heartCheck
+      ? this.setState({modalVisible: !this.state.modalVisible})
+      : this.setState({modalVisible: this.state.modalVisible});
   };
   renderItem = ({item}) => {
     return (
@@ -59,7 +66,7 @@ class News extends React.Component {
             <ImageBackground
               style={{
                 width: '100%',
-                height: hp('20%'),
+                height: hp('28%'),
                 justifyContent: 'flex-start',
               }}
               imageStyle={{borderRadius: 15}}
@@ -103,7 +110,10 @@ class News extends React.Component {
             keyExtractor={(item) => item.newsId}
           />
         </View>
-        <SaveModal />
+        <SaveModal
+          handleModal={this.handleModal}
+          isModalVisible={this.state.modalVisible}
+        />
       </ScrollView>
     );
   }

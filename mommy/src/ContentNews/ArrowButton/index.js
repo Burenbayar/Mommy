@@ -27,11 +27,11 @@ const ArrowButton = (props) => {
             }}
             style={styles.btn1}>
             <Icon
-              style={{marginLeft: wp('3%')}}
+              style={{marginLeft: wp('1%')}}
               size={wp('8%')}
               name={'ios-arrow-back'}
               color="#9E9898"></Icon>
-            <View style={styles.weekDay2}>
+            <View style={styles.weekDay}>
               <Text style={styles.index}>{days[index]}</Text>
               <View>
                 <Text style={styles.day}>Долоо хоног</Text>
@@ -62,12 +62,11 @@ const ArrowButton = (props) => {
               />
               <View style={{alignItems: 'center', paddingTop: '16%'}}>
                 <Text style={styles.day2}>{days[index + 1]}</Text>
-                <Text style={styles.week}>Долоо хоног</Text>
               </View>
             </Svg>
           </View>
         </View>
-        <View>
+        <View style={{position: 'absolute', right: 5}}>
           <TouchableOpacity
             onPress={() => {
               setIndex(index + 1);
@@ -104,23 +103,19 @@ const styles = StyleSheet.create({
   },
   btn1: {
     marginTop: wp('1%'),
-    // backgroundColor: 'blue',
     flexDirection: 'row',
-    alignItems: 'center',
     width: wp('25%'),
   },
   btn2: {
     marginTop: wp('1%'),
-    paddingLeft: wp('1%'),
-    // backgroundColor: 'yellow',
+    justifyContent: 'flex-end',
     flexDirection: 'row',
     alignItems: 'center',
     width: wp('25%'),
   },
   day: {
     color: '#9E9898',
-    fontSize: wp('2.4%'),
-    // backgroundColor: 'blue',
+    fontSize: 8,
   },
   container2: {
     alignItems: 'center',
@@ -130,30 +125,21 @@ const styles = StyleSheet.create({
     height: wp('50%'),
   },
   day2: {
-    fontSize: wp('17%'),
+    fontSize: wp('19%'),
     color: 'white',
-    opacity: 0.6,
-    marginBottom: wp('5%'),
+    opacity: 0.7,
   },
   week: {
-    fontSize: wp('3.5%'),
+    fontSize: 12,
     color: '#9E9898',
   },
   index: {
-    fontSize: wp('3.5%'),
+    fontSize: 12,
     color: '#9E9898',
     marginHorizontal: wp('1%'),
   },
   weekDay: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: wp('18%'),
-    marginLeft: wp('-3%'),
-    marginRight: wp('3%'),
-  },
-  weekDay2: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: wp('18%'),
   },
 });

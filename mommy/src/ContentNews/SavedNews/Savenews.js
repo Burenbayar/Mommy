@@ -60,7 +60,7 @@ const Tab = createMaterialTopTabNavigator(
         marginLeft: hp('1%'),
       },
       labelStyle: {
-        fontSize: wp('3.5%'),
+        fontSize: 11,
       },
       tabStyle: {
         marginHorizontal: wp('-10%'),

@@ -3,7 +3,8 @@ import {ImageBackground, Image, View, SafeAreaView, Text} from 'react-native';
 import Shop from '../Shop';
 import Person from '../Person';
 import StackNavigation from '../../Form/StackNavigation';
-// import Home from '../../Group/Home/home';
+import Home from '../../Group/Home/home';
+import Live from '../../Group/Home/Live';
 import ContentNews from '../../ContentNews';
 import SeeMore from '../SeeMore';
 import Savenews from '../SavedNews/Savenews';
@@ -18,12 +19,31 @@ import {
 } from 'react-native-responsive-screen';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createDrawerNavigator, DrawerItems} from 'react-navigation-drawer';
-
+const GroupStack = createStackNavigator({
+  GroupHome: {
+    screen: Home,
+    navigationOptions: {
+      header: false,
+    },
+  },
+  Forum: {
+    screen: StackNavigation,
+    navigationOptions: {
+      headerTitle: 'Форум',
+    },
+  },
+  Live: {
+    screen: Live,
+    navigationOptions: {
+      headerTitle: 'Live',
+    },
+  },
+});
 const TabNavigator = createBottomTabNavigator(
   {
     Person: {
-      screen: StackNavigation,
-      navigationOptions: {
+      screen: GroupStack,
+      navigationOptions: ({navigation}) => ({
         tabBarIcon: () => (
           <View>
             <Icon
@@ -35,7 +55,8 @@ const TabNavigator = createBottomTabNavigator(
         tabBarLabel: () => {
           return null;
         },
-      },
+        tabBarVisible: navigation.state.index == 0,
+      }),
     },
     ContentNews: {
       screen: ContentNews,

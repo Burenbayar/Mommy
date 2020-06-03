@@ -25,7 +25,7 @@ class Header extends Component {
       <View>
         <ImageBackground
           style={{width: '100%', height: hp('31%')}}
-          source={require('../contentImage/avengers.jpg')}>
+          source={require('../contentImage/unnamed.jpg')}>
           <View style={styles.header}>
             <TouchableOpacity
               onPress={() => this.props.navigation.openDrawer()}>

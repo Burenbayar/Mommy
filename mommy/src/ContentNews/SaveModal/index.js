@@ -1,33 +1,31 @@
 import React, {Component, useState} from 'react';
-import {View, Modal, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import LinearGradient from 'react-native-linear-gradient';
-
+import Modal from 'react-native-modal';
 const SaveModal = (props) => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const handleModal = () => {
-    setModalVisible(false);
-  };
   return (
-    <Modal animationType="slide" transparent={true} visible={modalVisible}>
+    <Modal
+      animationIn={'fadeIn'}
+      transparent={true}
+      isVisible={props.isModalVisible}>
       <View
         style={{
           borderRadius: 10,
-          marginTop: 200,
           backgroundColor: 'white',
-          margin: wp('2%'),
-          height: hp('34%'),
+          margin: wp('1%'),
+          height: hp('30%'),
         }}>
         <Text style={{textAlign: 'center', fontSize: 22}}>Хадгалах</Text>
-        <Text style={{textAlign: 'center', marginBottom: 100}}>
+        <Text style={{textAlign: 'center', marginBottom: wp('20%')}}>
           Мэдээлэл амжилттай хадгалагдлаа
         </Text>
         <View style={styles.MainContainer}>
           <TouchableOpacity
-            onPress={handleModal}
+            onPress={props.handleModal}
             activeOpacity={0.5}
             style={{width: '80%'}}>
             <LinearGradient
@@ -52,7 +50,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   LinearGradientStyle: {
-    height: 50,
+    height: hp('7%'),
     borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',
