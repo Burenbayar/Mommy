@@ -5,7 +5,8 @@ import {
   ScrollView,
   Text,
   FlatList,
-  Image
+  Image,
+  TouchableOpacity,
 } from 'react-native';
 import HospitalJson from './HospitalJson';
 import Eicon from 'react-native-vector-icons/Entypo';
@@ -17,8 +18,8 @@ import {
 } from 'react-native-responsive-screen';
 
 class HospitalComponent extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       items: [],
     };
@@ -37,7 +38,9 @@ class HospitalComponent extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.first}>
+          <TouchableOpacity onPress={()=> {this.props.navigation.navigate('Profile')}}>
           <Image style={styles.first1} source={item.Pimage}/>
+          </TouchableOpacity>
         </View>
         <View style={styles.second}>
           <View style={styles.second1}>

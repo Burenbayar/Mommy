@@ -7,8 +7,9 @@ import {
   Text,
   FlatList,
   Image,
+  ImageBackground,
 } from 'react-native';
-import newsJson from './newsJson';
+// import newsJson from './newsJson';
 import Eicon from 'react-native-vector-icons/Entypo';
 import Maticon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicon from 'react-native-vector-icons/Ionicons';
@@ -22,7 +23,7 @@ class BaiguulgaPro extends React.Component {
         <View style={styles.container}>
             <View style={styles.header}>
               <View style={styles.first}>
-                <ImageBackground source={image} style={styles.image}>
+                <ImageBackground  style={styles.image}>
                   <View>
                     <Text style={styles.text}>Өргөө Амаржих газар</Text>
                   </View>
@@ -51,7 +52,7 @@ class BaiguulgaPro extends React.Component {
         </View>
     }
 }
-
+export default BaiguulgaPro;
 const styles = StyleSheet.create({
     container:{
         flexDirection: 'column',
