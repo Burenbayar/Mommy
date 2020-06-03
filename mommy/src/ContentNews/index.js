@@ -22,19 +22,19 @@ class ContentNews extends React.Component {
     for (let index = 1; index < 42; index++) {
       this.state.days.push(index);
     }
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((response) => response.json())
-      .then((json) => {
-        console.warn(json);
-      })
-      .catch(function (error) {
-        console.log(
-          'There has been a problem with your fetch operation: ' +
-            error.message,
-        );
-        // ADD THIS THROW error
-        throw error;
-      });
+    // fetch('http://192.168.100.243:8082/mama/maNews/10')
+    //   .then((response) => response.json())
+    //   .then((json) => {
+    //     console.warn(json);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(
+    //       'There has been a problem with your fetch operation: ' +
+    //         error.message,
+    //     );
+    //     // ADD THIS THROW error`
+    //     throw error;
+    //   });
 
     // this.getApiData();
   }

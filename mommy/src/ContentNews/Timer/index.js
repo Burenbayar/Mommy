@@ -5,11 +5,11 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {CountdownCircleTimer} from 'react-native-countdown-circle-timer';
-import Icon from 'react-native-vector-icons/Ionicons';
+import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Svg, {Circle} from 'react-native-svg';
 
 const Timer = (props) => {
-  const [second, setSecond] = useState(props.second);
+  const [second, setSecond] = useState(0);
   const [percent, setPercent] = useState(0);
   const upgradeSecond = () => {
     setTimeout(() => {
@@ -25,10 +25,10 @@ const Timer = (props) => {
     <View style={styles.container}>
       <Svg viewBox="0 0 12 12">
         <Circle
+          fill="white"
           cx="50%"
           cy="50%"
           r="30%"
-          fill="#FA3D5A"
           stroke="white"
           strokeWidth={1.5}
         />
@@ -42,11 +42,11 @@ const Timer = (props) => {
           strokeDasharray={`${percent} ${100 - percent}`}
           strokeDashoffset="10"
         />
-        <Icon
-          style={{margin: wp('4.7%')}}
-          name="md-heart"
-          size={wp('3%')}
-          color="white"></Icon>
+        <MaterialIcon
+          style={{alignSelf: 'center', marginTop: '20%'}}
+          name="heart-circle"
+          size={25}
+          color="#FA3D5A"></MaterialIcon>
       </Svg>
     </View>
   );

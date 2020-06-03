@@ -9,10 +9,12 @@ import ContentNews from '../../ContentNews';
 import SeeMore from '../SeeMore';
 import Savenews from '../SavedNews/Savenews';
 import tools from '../../tools/index';
+import DrawContent from './DrawContent';
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Iconn from 'react-native-vector-icons/Entypo';
+import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -107,10 +109,7 @@ const TabNavigator = createBottomTabNavigator(
 
 const DrawerContent = (props) => (
   <View>
-    <ImageBackground
-      style={{height: hp('25%'), width: wp('70%')}}
-      source={require('../contentImage/child.png')}
-    />
+    <DrawContent navigation={props.navigation} />
     <DrawerItems {...props} />
   </View>
 );
