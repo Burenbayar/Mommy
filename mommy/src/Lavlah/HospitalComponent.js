@@ -16,12 +16,14 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import Modal from 'react-native-modal';
 
 class HospitalComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       items: [],
+      modalVisible: false,
     };
     data = {
       clicked: 0,
@@ -33,7 +35,9 @@ class HospitalComponent extends React.Component {
   componentDidMount() {
     this.setState({items: HospitalJson});
   }
-
+  handleModal = () =>{
+    this.setState({modalVisible: !this.state.modalVisible})
+  }
   renderItem = ({item}) => {
     return (
       <View style={styles.container}>
@@ -67,7 +71,9 @@ class HospitalComponent extends React.Component {
               </View>
             </View>
             <View style={styles.phone}>
-              <Maticon name='phone' size={16} color="grey" />
+              <TouchableOpacity onPress={this.handleModal}>
+                <Maticon name='phone' size={16} color="grey" />
+              </TouchableOpacity>
               <View style={{marginLeft: wp('2%')}}>
                 <Text style={styles.locText}>
                     {item.tele}
@@ -91,6 +97,7 @@ class HospitalComponent extends React.Component {
             marginBottom={70}
           />
         </View>
+        <Modal handleModal={this.handleModal} isModalVisible = {this.state.modalVisible}/>
       </ScrollView>
     );
   }

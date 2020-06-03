@@ -2,40 +2,50 @@ import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableOpacity,
 } from "react-native";
 import Maticon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Modal from 'react-native-modal';
-import Btton from '../../tools/name/Btton';
+import {
+    widthPercentageToDP as wp,
+    heightPercentageToDP as hp,
+  } from 'react-native-responsive-screen';
+  import LinearGradient from 'react-native-linear-gradient';
 
-class Call extends Component {
-    state = {
-        modalVisible: false
-    };
 
-  toggleModal = () => {
-    this.setState({isModalVisible: !this.state.isModalVisible});
-  };
 
-  render() {
-    const { modalVisible } = this.state;
+const Call =  (props) => {
     return (
       <View style={styles.centeredView}>
-        <Modal visible={This.state.isModalVisible}>
+        <Modal isVisible ={props.isModalVisible}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-                <Text style={styles.modalText}>Өргөө амаржих газар</Text>
+    <Text style={styles.modalText}>ere</Text>
                 <View>
                     <Maticon name='phone' size={wp('6%')} color="grey" />
                 </View>
-                <Text style={styles.modalText}>7011-2231</Text>
-                <Btton/>
+    <Text style={styles.modalText}>1212</Text>
+                <View style={styles.MainContainer}>
+                    <TouchableOpacity
+                    activeOpacity={0.5}
+                    onPress={props.handleModal}
+                    style={{width: '80%'}}>
+                    <LinearGradient
+                        colors={['#F36227', '#EE227C']}
+                        style={styles.LinearGradientStyle}
+                        start={{x: 0, y: 0}}
+                        end={{x: 1, y: 0.9}}
+                        locations={[0, 1]}>
+                        <Text style={styles.buttonText}>Дуудлага хийх</Text>
+                    </LinearGradient>
+                    </TouchableOpacity>
+                </View>
             </View>
           </View>
         </Modal>
       </View>
     );
-  }
 }
 
 const styles = StyleSheet.create({
@@ -45,6 +55,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   modalView: {
+    height:150,
+    width: 200,
     margin: 20,
     backgroundColor: "white",
     borderRadius: 20,
@@ -61,7 +73,22 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: "center"
-  }
-});
+  },
+  MainContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  LinearGradientStyle: {
+    height: 50,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    fontSize: 14,
+    color: '#fff',
+    backgroundColor: 'transparent',
+},});
 
 export default Call;
