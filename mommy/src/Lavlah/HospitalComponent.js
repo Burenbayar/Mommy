@@ -5,7 +5,8 @@ import {
   ScrollView,
   Text,
   FlatList,
-  Image
+  Image,
+  TouchableOpacity,
 } from 'react-native';
 import HospitalJson from './HospitalJson';
 import Eicon from 'react-native-vector-icons/Entypo';
@@ -16,6 +17,8 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import Modal from 'react-native-modal';
+
+const data = {clicked: 0, like: 1200, dislike: 1300};
 
 class HospitalComponent extends React.Component {
   constructor() {
@@ -35,9 +38,9 @@ class HospitalComponent extends React.Component {
   renderItem = ({item}) => {
     return (
       <View style={styles.container}>
-        <View style={styles.first}>
+        <TouchableOpacity style={styles.first}>
           <Image style={styles.first1} source={item.Pimage}/>
-        </View>
+        </TouchableOpacity>
         <View style={styles.second}>
           <View style={styles.second1}>
             <View style={styles.second11}>
@@ -59,7 +62,7 @@ class HospitalComponent extends React.Component {
           <View style={styles.second2}>
             <View>
               <View style={styles.second21}>
-                <Like/>
+                <Like size={14} info={data}/>
               </View>
             </View>
             <View style={styles.phone}>
@@ -138,12 +141,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   second21:{
-    marginLeft: wp('-4%'),
+    marginLeft: wp('1%'),
     width: wp('25.6%'),
   },
   phone:{
     flexDirection: 'row',
-    marginLeft: wp('25%'),
+    marginLeft: wp('20%'),
     alignItems: 'center',
     marginTop: wp('-1%')
   }

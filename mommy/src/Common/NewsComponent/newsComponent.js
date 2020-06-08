@@ -17,7 +17,9 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+
 const data = {clicked: 0, like: 1200, dislike: 1300};
+
 class NewsComponent extends React.Component {
   constructor() {
     super();

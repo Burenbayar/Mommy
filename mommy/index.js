@@ -7,6 +7,6 @@ import News from './src/Common/NewsComponent/newsComponent';
 import HospitalInfo from './src/Lavlah/HospitalInfo';
 import Lavlah from './src/Lavlah/Lavlah/Lavlah';
 import Navigate from './src/ContentNews/Navigate';
-import specialNum from './src/Lavlah/SpecialNum'
+import specialNum from './src/Lavlah/SpecialNum';
 
 AppRegistry.registerComponent(appName, () => Lavlah);

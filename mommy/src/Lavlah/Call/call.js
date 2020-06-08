@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#fff',
     backgroundColor: 'transparent',
-},});
+  },
+});
 
 export default Call;
