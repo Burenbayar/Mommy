@@ -11,7 +11,7 @@ const ArrowButton = (props) => {
   const [days, setDays] = useState(props.days);
   const [percent, setPercent] = useState(0);
   useEffect(() => {
-    if (percent < days[index]) {
+    if (percent <= days[index]) {
       setPercent((days[index] * 100) / 40);
     }
   }, [percent]);
@@ -21,6 +21,7 @@ const ArrowButton = (props) => {
       <View style={styles.container}>
         <View>
           <TouchableOpacity
+            disabled={index == 0 ? true : false}
             onPress={() => {
               setIndex(index - 1);
               setPercent((days[index - 1] * 100) / 40);
@@ -55,7 +56,7 @@ const ArrowButton = (props) => {
                 cy="50%"
                 r="46%"
                 fill="transparent"
-                stroke="#FA3D5A"
+                stroke={days[index] > 39 ? 'greenyellow' : '#FA3D5A'}
                 strokeWidth={2}
                 strokeDasharray={`${percent} ${100 - percent}`}
                 strokeDashoffset="25"
@@ -68,9 +69,11 @@ const ArrowButton = (props) => {
         </View>
         <View style={{position: 'absolute', right: 5}}>
           <TouchableOpacity
+            disabled={days[index] > 39 ? true : false}
             onPress={() => {
               setIndex(index + 1);
               setPercent((days[index + 1] * 100) / 40);
+              // props.getData(index);
             }}
             style={styles.btn2}>
             <View style={styles.weekDay}>

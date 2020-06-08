@@ -11,21 +11,24 @@ class ContentNews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: newsJson,
       searchText: '',
-      index: 0,
+      index: 1,
       isLoading: false,
       days: [],
+      items: newsJson,
     };
+    // this.getApiData(2);
   }
   componentDidMount() {
-    for (let index = 1; index < 42; index++) {
-      this.state.days.push(index);
+    for (let i = 0; i < 42; i++) {
+      this.state.days.push(i);
     }
+    // let items = [];
     // fetch('http://192.168.100.243:8082/mama/maNews/10')
     //   .then((response) => response.json())
     //   .then((json) => {
     //     console.warn(json);
+    //     this.setState({items: json.entity});
     //   })
     //   .catch(function (error) {
     //     console.log(
@@ -38,14 +41,13 @@ class ContentNews extends React.Component {
 
     // this.getApiData();
   }
-  // async getApiData() {
-  //   let resp = await axios.get('https://jsonplaceholder.typicode.com/users#');
-  //   console.warn(resp.data);
-  //   this.setState({items: resp.data});
-  //   axios
-  //     .get('https://jsonplaceholder.typicode.com/users#')
-  //     .then((response) => console.warn(response))
-  //     .catch((err) => console.warn(err));
+  // async getApiData(id) {
+  //   let resp = await axios.get(
+  //     `http://192.168.100.243:8082/mama/maNews/week/${id}`,
+  //   );
+  //   console.warn(resp.data.entity);
+  //   let data = resp.data.entity;
+  //   this.setState({items: data});
   // }
   render() {
     return (
@@ -56,18 +58,19 @@ class ContentNews extends React.Component {
             searchText={this.state.searchText}
             onSearchChangeText={(text) => this.setState({searchText: text})}
           />
-          {/* <View>
-            {this.state.items.map((e) => {
-              <Text>{e.name}</Text>;
-            })}
-          </View> */}
-          <ArrowButton index={this.state.index} days={this.state.days} />
-          <News
-            navigation={this.props.navigation}
-            newsCheck={true}
-            items={newsJson}
-            data={this.state.searchText}
+          <ArrowButton
+            getData={this.getApiData}
+            index={this.state.index}
+            days={this.state.days}
           />
+          {this.state.items && (
+            <News
+              navigation={this.props.navigation}
+              newsCheck={true}
+              items={this.state.items}
+              data={this.state.searchText}
+            />
+          )}
         </View>
       </ScrollView>
     );

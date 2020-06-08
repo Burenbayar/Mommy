@@ -39,11 +39,13 @@ export default class SeeMore extends Component {
       inputRange: [0, HEADER_SCROLL_DISTANCE / 2, HEADER_SCROLL_DISTANCE],
       outputRange: [1, 1, 0],
       extrapolate: 'clamp',
+      useNativeDriver: false,
     });
     const imageTranslate = this.AnimatedHeaderValue.interpolate({
       inputRange: [0, HEADER_SCROLL_DISTANCE],
       outputRange: [0, -50],
       extrapolate: 'clamp',
+      useNativeDriver: false,
     });
     const AnimateHeaderHeight = this.AnimatedHeaderValue.interpolate({
       inputRange: [0, Header_Maximum_Height - Header_Minimum_Height],
@@ -51,8 +53,18 @@ export default class SeeMore extends Component {
       outputRange: [Header_Maximum_Height, Header_Minimum_Height],
 
       extrapolate: 'clamp',
+      useNativeDriver: false,
     });
-
+    // const headerHeight = this.AnimatedHeaderValue.interpolate({
+    //   inputRange: [0, Header_Maximum_Height - Header_Minimum_Height],
+    //   outputRange: [Header_Maximum_Height, Header_Minimum_Height],
+    //   extrapolate: 'clamp',
+    // });
+    // const headerBackgroundColor = this.AnimatedHeaderValue.interpolate({
+    //   inputRange: [0, 20 - 0],
+    //   outputRange: [20, 19],
+    //   extrapolate: 'clamp',
+    // });
     return (
       <View style={styles.MainContainer}>
         <ScrollView
@@ -112,6 +124,7 @@ export default class SeeMore extends Component {
                 style={{
                   flexDirection: 'row',
                   alignItems: 'center',
+                  marginTop: -5,
                 }}>
                 <View>
                   <Like size={14} info={data} />
@@ -219,7 +232,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     marginHorizontal: wp('4%'),
-    marginTop: 18,
+    marginTop: wp('4%'),
   },
   content: {
     marginVertical: wp('4%'),
@@ -269,7 +282,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    backgroundColor: 'transparent',
+    // backgroundColor: 'white',
     // overflow: 'hidden',
   },
   backgroundImage: {

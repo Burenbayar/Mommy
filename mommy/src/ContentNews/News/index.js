@@ -25,8 +25,12 @@ class News extends React.Component {
       heartCheck: false,
       isRefreshing: false,
       modalVisible: false,
+      readCheck: false,
     };
   }
+  handleReadCheck = () => {
+    this.setState({readCheck: !this.state.readCheck});
+  };
   handleHeart = (itemID) => {
     let data = this.state.items;
     data[itemID].heart = !data[itemID].heart;
@@ -61,6 +65,7 @@ class News extends React.Component {
             onPress={() =>
               this.props.navigation.navigate('SeeMore', {
                 data: item,
+                readCheck: this.handleReadCheck(),
               })
             }>
             <ImageBackground
@@ -71,7 +76,7 @@ class News extends React.Component {
               }}
               imageStyle={{borderRadius: 15}}
               source={item.image}>
-              <Timer second={this.state.second} />
+              <Timer readCheck={this.state.readCheck} />
             </ImageBackground>
           </TouchableOpacity>
         </View>
@@ -102,19 +107,21 @@ class News extends React.Component {
   };
   render() {
     return (
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View>
-          <FlatList
-            data={this.formatData(this.state.items)}
-            renderItem={this.renderItem}
-            keyExtractor={(item) => item.newsId}
+      this.props.items && (
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View>
+            <FlatList
+              data={this.props.items}
+              renderItem={this.renderItem}
+              keyExtractor={(item) => item.newsId}
+            />
+          </View>
+          <SaveModal
+            handleModal={this.handleModal}
+            isModalVisible={this.state.modalVisible}
           />
-        </View>
-        <SaveModal
-          handleModal={this.handleModal}
-          isModalVisible={this.state.modalVisible}
-        />
-      </ScrollView>
+        </ScrollView>
+      )
     );
   }
 }

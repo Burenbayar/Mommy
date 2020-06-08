@@ -6,61 +6,38 @@ import {
 } from 'react-native-responsive-screen';
 import {CountdownCircleTimer} from 'react-native-countdown-circle-timer';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Svg, {Circle} from 'react-native-svg';
-
-const Timer = (props) => {
-  const [second, setSecond] = useState(0);
-  const [percent, setPercent] = useState(0);
-  const upgradeSecond = () => {
-    setTimeout(() => {
-      setPercent(percent + 1);
-    }, 5);
-  };
-  useEffect(() => {
-    if (percent < second) {
-      upgradeSecond();
-    }
-  }, [percent]);
-  return (
-    <View style={styles.container}>
-      <Svg viewBox="0 0 12 12">
-        <Circle
-          fill="white"
-          cx="50%"
-          cy="50%"
-          r="30%"
-          stroke="white"
-          strokeWidth={1.5}
-        />
-        <Circle
-          cx="50%"
-          cy="50%"
-          r="30%"
-          fill="transparent"
-          stroke="#FA3D5A"
-          strokeWidth={0.8}
-          strokeDasharray={`${percent} ${100 - percent}`}
-          strokeDashoffset="10"
-        />
-        <MaterialIcon
-          style={{alignSelf: 'center', marginTop: '20%'}}
-          name="heart-circle"
-          size={25}
-          color="#FA3D5A"></MaterialIcon>
-      </Svg>
-    </View>
-  );
-};
+const Timer = (props) => (
+  <View style={styles.container}>
+    <CountdownCircleTimer
+      isPlaying={props.readCheck}
+      duration={20}
+      size={30}
+      strokeLinecap={0}
+      trailColor="#FA3D5A"
+      strokeWidth={5}
+      colors={[['white', 0.33], ['white', 0.33], ['white']]}>
+      <MaterialIcon
+        style={{
+          alignSelf: 'center',
+        }}
+        name="heart-circle"
+        size={wp('7%')}
+        color="#FA3D5A"></MaterialIcon>
+    </CountdownCircleTimer>
+  </View>
+);
 
 export default Timer;
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
-    right: 2,
-    top: 5,
-    width: wp('12%'),
-    height: wp('12%'),
+    right: 10,
+    top: 10,
+    borderRadius: 30,
+    width: wp('7%'),
+    height: wp('7%'),
   },
 });
