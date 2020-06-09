@@ -9,6 +9,7 @@ import {
   Text,
   Image,
   Animated,
+  BackHandler,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import IconDot from 'react-native-vector-icons/Entypo';
@@ -32,8 +33,17 @@ export default class SeeMore extends Component {
     this.AnimatedHeaderValue = new Animated.Value(0);
     data.like = this.state.data.newsLike;
     data.dislike = this.state.data.newsDislike;
+    this.handleBackButton = this.handleBackButton.bind(this);
   }
-
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+  }
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
+  }
+  handleBackButton = () => {
+    this.props.navigation.state.params.onGoBack(this.state.data.newsId);
+  };
   render() {
     const imageOpacity = this.AnimatedHeaderValue.interpolate({
       inputRange: [0, HEADER_SCROLL_DISTANCE / 2, HEADER_SCROLL_DISTANCE],
@@ -156,9 +166,23 @@ export default class SeeMore extends Component {
             ]}
             source={this.state.data.image}
           />
-          <Animated.View style={styles.header2}>
+          <Animated.View
+            style={[
+              styles.header2,
+              {
+                opacity: imageOpacity,
+                // transform: [{translateY: imageTranslate}],
+              },
+            ]}>
             <View style={styles.header}>
-              <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.goBack(
+                    this.props.navigation.state.params.onGoBack(
+                      this.state.data.newsId,
+                    ),
+                  )
+                }>
                 <Icon
                   size={wp('9%')}
                   name={'ios-arrow-back'}

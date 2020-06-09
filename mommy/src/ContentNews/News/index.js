@@ -25,20 +25,18 @@ class News extends React.Component {
       heartCheck: false,
       isRefreshing: false,
       modalVisible: false,
-      readCheck: false,
     };
   }
-  handleReadCheck = () => {
-    this.setState({readCheck: !this.state.readCheck});
+  handleReadCheck = (itemID) => {
+    let data = this.state.items;
+    data[itemID].second = !data[itemID].second;
+    this.setState({items: data});
   };
   handleHeart = (itemID) => {
     let data = this.state.items;
     data[itemID].heart = !data[itemID].heart;
     this.setState({items: data});
     this.state.heartCheck = data[itemID].heart;
-    data[itemID].heart
-      ? this.setState({second: 1})
-      : this.setState({second: 0});
     this.handleModal();
   };
   formatData = (item) => {
@@ -65,7 +63,8 @@ class News extends React.Component {
             onPress={() =>
               this.props.navigation.navigate('SeeMore', {
                 data: item,
-                readCheck: this.handleReadCheck(),
+                readCheck: this.handleReadCheck(item.newsId),
+                onGoBack: this.handleReadCheck,
               })
             }>
             <ImageBackground
@@ -76,7 +75,7 @@ class News extends React.Component {
               }}
               imageStyle={{borderRadius: 15}}
               source={item.image}>
-              <Timer readCheck={this.state.readCheck} />
+              <Timer readCheck={item.second} />
             </ImageBackground>
           </TouchableOpacity>
         </View>

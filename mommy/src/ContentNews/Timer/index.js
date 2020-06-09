@@ -10,12 +10,15 @@ const Timer = (props) => (
   <View style={styles.container}>
     <CountdownCircleTimer
       isPlaying={props.readCheck}
-      duration={20}
+      duration={15}
       size={30}
       strokeLinecap={0}
-      trailColor="#FA3D5A"
-      strokeWidth={5}
-      colors={[['white', 0.33], ['white', 0.33], ['white']]}>
+      trailColor="transparent"
+      strokeWidth={3}
+      onComplete={() => {
+        console.log('timer complete');
+      }}
+      colors={[['white', 0.1], ['#FA3D5A', 0.33], ['#FA3D5A']]}>
       <MaterialIcon
         style={{
           alignSelf: 'center',
@@ -34,10 +37,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
-    right: 10,
-    top: 10,
+    right: 5,
+    top: 5,
     borderRadius: 30,
-    width: wp('7%'),
-    height: wp('7%'),
+    width: wp('9%'),
+    height: wp('9%'),
   },
 });

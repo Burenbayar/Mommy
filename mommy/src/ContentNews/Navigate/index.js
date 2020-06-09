@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import {ImageBackground, Image, View, SafeAreaView, Text} from 'react-native';
+import {Image, View} from 'react-native';
 import Shop from '../Shop';
-import Person from '../Person';
 import StackNavigation from '../../Form/StackNavigation';
 import Home from '../../Group/Home/home';
 import Live from '../../Group/Home/Live';
@@ -9,12 +8,14 @@ import ContentNews from '../../ContentNews';
 import SeeMore from '../SeeMore';
 import Savenews from '../SavedNews/Savenews';
 import tools from '../../tools/index';
+import Lavlah from '../../Lavlah/Lavlah/Lavlah';
+import BaiguulgaPro from '../../Lavlah/BaiguulgaPro';
 import DrawContent from './DrawContent';
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Iconn from 'react-native-vector-icons/Entypo';
-import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import RefIcon from 'react-native-vector-icons/AntDesign';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -157,6 +158,20 @@ const Drawer = createDrawerNavigator(
         drawerLabel: 'Миний хэрэгсэл',
       },
     },
+    Lavlah: {
+      screen: Lavlah,
+      navigationOptions: {
+        drawerIcon: () => (
+          <View>
+            <RefIcon
+              style={[{color: '#9E9898'}]}
+              size={23}
+              name={'questioncircle'}></RefIcon>
+          </View>
+        ),
+        drawerLabel: 'Лавлах',
+      },
+    },
   },
   {
     drawerPosition: 'left',
@@ -177,6 +192,12 @@ const HomeStack = createStackNavigator({
     screen: SeeMore,
     navigationOptions: {
       header: false,
+    },
+  },
+  BaiguulgaPro: {
+    screen: BaiguulgaPro,
+    navigationOptions: {
+      header: true,
     },
   },
 });

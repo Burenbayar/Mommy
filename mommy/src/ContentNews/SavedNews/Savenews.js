@@ -104,7 +104,7 @@ const App = createStackNavigator({
         </TouchableOpacity>
       ),
       headerRight: () => (
-        <TouchableOpacity onPress={() => screenProps.navigation.goBack()}>
+        <TouchableOpacity>
           <Icon
             style={{marginRight: wp('6%')}}
             name="ios-notifications"
