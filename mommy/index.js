@@ -8,5 +8,6 @@ import HospitalInfo from './src/Lavlah/HospitalInfo';
 import Lavlah from './src/Lavlah/Lavlah/Lavlah';
 import Navigate from './src/ContentNews/Navigate';
 import specialNum from './src/Lavlah/SpecialNum';
+import baiguulgaPro from './src/Lavlah/BaiguulgaPro';
 
-AppRegistry.registerComponent(appName, () => Lavlah);
+AppRegistry.registerComponent(appName, () => baiguulgaPro);
