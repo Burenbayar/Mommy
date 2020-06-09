@@ -4,5 +4,11 @@
 <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+<<<<<<< HEAD
+=======
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    
+>>>>>>> da2374db7a931c6471976c58ffecd38d3eff2617
     <application android:usesCleartextTraffic="true" tools:targetApi="28" tools:ignore="GoogleAppIndexingWarning" />
 </manifest>

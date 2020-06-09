@@ -4,69 +4,89 @@ import {
   StyleSheet,
   ImageBackground,
   TouchableOpacity,
+  TouchableHighlight,
   ScrollView,
   Text,
   SafeAreaView,
   FlatList,
 } from 'react-native';
-import newsJson from './newsJson';
-import CircleWeek from '../CircleWeek';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import Timer from '../Timer';
+import SaveModal from '../SaveModal';
 class News extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
+      items: this.props.items,
       heartCheck: false,
+      isRefreshing: false,
+      modalVisible: false,
     };
   }
-
-  componentDidMount() {
-    this.setState({items: newsJson});
-  }
+  handleReadCheck = (itemID) => {
+    let data = this.state.items;
+    data[itemID].second = !data[itemID].second;
+    this.setState({items: data});
+  };
   handleHeart = (itemID) => {
     let data = this.state.items;
     data[itemID].heart = !data[itemID].heart;
     this.setState({items: data});
+    this.state.heartCheck = data[itemID].heart;
+    this.handleModal();
   };
   formatData = (item) => {
-    item = item.filter((el) =>
-      el.name.toLowerCase().includes(this.props.data.toLowerCase()),
-    );
-    return item;
+    if (this.props.newsCheck) {
+      item = item.filter((el) =>
+        el.newsTitle.toLowerCase().includes(this.props.data.toLowerCase()),
+      );
+      return item;
+    } else {
+      return item;
+    }
+  };
+  handleModal = () => {
+    this.state.heartCheck
+      ? this.setState({modalVisible: !this.state.modalVisible})
+      : this.setState({modalVisible: this.state.modalVisible});
   };
   renderItem = ({item}) => {
     return (
-      <View style={styles.container} key={item.id}>
+      <View style={styles.container} key={item.newsId}>
         <View>
           <TouchableOpacity
+            // disabled={this.props.scroll}
             onPress={() =>
               this.props.navigation.navigate('SeeMore', {
                 data: item,
+                readCheck: this.handleReadCheck(item.newsId),
+                onGoBack: this.handleReadCheck,
               })
             }>
             <ImageBackground
               style={{
                 width: '100%',
-                height: hp('20%'),
+                height: hp('28%'),
                 justifyContent: 'flex-start',
               }}
               imageStyle={{borderRadius: 15}}
-              source={item.image}></ImageBackground>
+              source={item.image}>
+              <Timer readCheck={item.second} />
+            </ImageBackground>
           </TouchableOpacity>
         </View>
         <View style={styles.text}>
           <View style={styles.dateName}>
-            <Text style={styles.name}>{item.name}</Text>
-            <Text style={styles.date}>{item.date}</Text>
+            <Text style={styles.name}>{item.newsTitle}</Text>
+            <Text style={styles.date}>{item.newsDate}</Text>
           </View>
           <TouchableOpacity
             style={styles.heart}
-            onPress={() => this.handleHeart(item.id)}>
+            onPress={() => this.handleHeart(item.newsId)}>
             <View>
               {item.heart ? (
                 <Icon name="md-heart" size={25} color="#FA3D5A"></Icon>
@@ -79,21 +99,28 @@ class News extends React.Component {
       </View>
     );
   };
-
+  onRefresh = () => {
+    this.setState({
+      isRefreshing: true,
+    });
+  };
   render() {
     return (
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{height: 1500}}>
-        <View>
-          <FlatList
-            data={this.formatData(this.state.items)}
-            renderItem={this.renderItem}
-            marginBottom={70}
-            keyExtractor={(item, index) => index.toString()}
+      this.props.items && (
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View>
+            <FlatList
+              data={this.props.items}
+              renderItem={this.renderItem}
+              keyExtractor={(item) => item.newsId}
+            />
+          </View>
+          <SaveModal
+            handleModal={this.handleModal}
+            isModalVisible={this.state.modalVisible}
           />
-        </View>
-      </ScrollView>
+        </ScrollView>
+      )
     );
   }
 }
@@ -102,7 +129,7 @@ export default News;
 
 const styles = StyleSheet.create({
   container: {
-    margin: wp('2.4%'),
+    margin: wp('2%'),
     backgroundColor: '#FFFFFF',
     borderRadius: 15,
   },
