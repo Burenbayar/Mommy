@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import {
   View,
   Image,
@@ -7,26 +7,37 @@ import {
   Dimensions,
   StyleSheet,
   Text,
+  ScrollView,
 } from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ImagePicker from 'react-native-image-crop-picker';
 import {ActionSheet, Root} from 'native-base';
+import LinearGradient from 'react-native-linear-gradient';
 
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+const numColumns = 2;
 const width = Dimensions.get('window').width;
+
 export default class PhotoScreen extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       fileList: [],
+      Num:[1,2,3,4,5,6,7,8,9,10],
+      index: -1,
     };
   }
-
   renderItem = ({item, index}) => {
     let {itemViewImage, itemImage} = styles;
 
     return (
       <View style={itemViewImage}>
         <Image source={item.url} style={itemImage} />
+        <Text style={styles.Num}>{this.state.Num[index]}</Text>
       </View>
     );
   };
@@ -52,7 +63,7 @@ export default class PhotoScreen extends Component {
   choosePhotoFromLibrary() {
     ImagePicker.openPicker({
       width: 300,
-      height: 400,
+      height: 300,
       cropping: true,
       // cropping: false,
       // includeBase64: true,
@@ -70,7 +81,7 @@ export default class PhotoScreen extends Component {
   takePhotoFromCamera() {
     ImagePicker.openCamera({
       width: 300,
-      height: 400,
+      height: 300,
       cropping: true,
       // cropping: false,
       // includeBase64: true,
@@ -95,6 +106,7 @@ export default class PhotoScreen extends Component {
     };
     newDataImg.push(item);
     this.setState({fileList: newDataImg});
+    this.setState({index: this.state.index+1})
   }
 
   render() {
@@ -103,18 +115,28 @@ export default class PhotoScreen extends Component {
     return (
       <Root>
         <View style={content}>
-          <Text>React Native Add Image</Text>
           <FlatList
+            style={{backgroundColor: '#F4F4F4', marginTop:10}}
             data={fileList}
             renderItem={this.renderItem}
             keyExtractor={(item, index) => index.toString()}
             extraData={this.state}
-          />
-          <TouchableOpacity
-            style={btnPressStyle}
-            onPress={() => this.onClickAddPicture()}>
-            <Text style={{color: '#000000'}}>Зураг оруулах</Text>
-          </TouchableOpacity>
+            numColumns={numColumns}>
+            </FlatList>
+          <View style={styles.MainContainer}>
+            <TouchableOpacity
+              onPress={() => this.onClickAddPicture()}
+              style={{width: '80%'}}>
+              <LinearGradient
+                colors={['#F36227', '#EE227C']}
+                style={styles.LinearGradientStyle}
+                start={{x: 0, y: 0}}
+                end={{x: 1, y: 0.9}}
+                locations={[0, 1]}>
+                <Text style={styles.buttonText}>ЗУРАГ ОРУУЛАХ</Text>
+              </LinearGradient>
+            </TouchableOpacity>
+          </View>
         </View>
       </Root>
     );
@@ -122,34 +144,56 @@ export default class PhotoScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  header:{
-    backgroundColor:'red'
+  Num:{
+    marginTop:-150,
+    // backgroundColor:'red',
+    color:'#ffffff50',
+    fontSize:wp('24%'),
+    height:150,
+    fontWeight:'bold',
   },
   content: {
-    paddingLeft: 30,
-    paddingRight: 30,
-    marginTop: 50,
-    marginBottom: 30,
+    backgroundColor: '#F4F4F4',
     flex: 1,
-    alignItems: 'center',
+    alignContent: 'center',
+    height: width / numColumns,
   },
   itemViewImage: {
+    backgroundColor: '#F4F4F4',
     alignItems: 'center',
+    justifyContent:'center',
     borderRadius: 8,
-    marginTop: 10,
   },
   itemImage: {
-    backgroundColor: '#2F455C',
-    height: 150,
-    width: width - 60,
+    width: wp('46%'),
+    height: wp('46%'),
     borderRadius: 8,
-    resizeMode: 'contain',
+    margin: '2%',
+    resizeMode: 'stretch',
   },
-  btnPressStyle: {
-    backgroundColor: '#ffffff',
+  MainContainer: {
+    height: '23%',
+    backgroundColor: '#F4F4F4',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  buttonText: {
+    fontSize: 14,
+    color: '#fff',
+    backgroundColor: 'transparent',
+  },
+  LinearGradientStyle: {
     height: 50,
-    width: width - 60,
+    borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
   },
+  // btnPressStyle: {
+  //   backgroundColor: 'green',
+  //   borderRadius: 8,
+  //   height: 50,
+  //   width: width - 60,
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  // },
 });

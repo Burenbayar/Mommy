@@ -11,7 +11,10 @@ import {
 import Entypo from 'react-native-vector-icons/Entypo';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 export default class ToolsScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -21,15 +24,12 @@ export default class ToolsScreen extends React.Component {
   };
   render() {
     return (
-      <ScrollView>
+      <View style={{flex: 1}}>
         <View style={styles.header}>
           <View style={{marginLeft: '5%'}}>
-            <Entypo
-              name="menu"
-              color="#D8D8D8"
-              size={30}></Entypo>
+            <Entypo name="menu" color="#00000080" size={30}></Entypo>
           </View>
-          
+
           <View>
             <Text
               style={{
@@ -42,10 +42,16 @@ export default class ToolsScreen extends React.Component {
             </Text>
           </View>
 
-          <View style={{flex:1, alignItems: "flex-end", justifyContent: "center", marginRight: '5%'}}>
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'flex-end',
+              justifyContent: 'center',
+              marginRight: '5%',
+            }}>
             <MaterialIcons
               name="notifications"
-              color="#D8D8D8"
+              color="#00000080"
               size={30}></MaterialIcons>
           </View>
         </View>
@@ -54,27 +60,33 @@ export default class ToolsScreen extends React.Component {
             <TouchableOpacity
               style={styles.button}
               onPress={() => this.props.navigation.navigate('cameraScreen')}>
-              <Image
+              <MaterialIcons
                 style={styles.Img}
-                source={require('./picture/camera_enhance-1.png')}
+                name="camera-enhance"
+                color="#00000080"
+                size={30}
               />
               <Text style={styles.texta}>Жирэмсний зураг оруулах </Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.button}
               onPress={() => this.props.navigation.navigate('beltgelScreen')}>
-              <Image
+              <MaterialIcons
                 style={styles.Img}
-                source={require('./picture/pregnant_woman-24px.png')}
+                name="pregnant-woman"
+                color="#00000080"
+                size={30}
               />
               <Text style={styles.texta}>Төрөх бэлтгэл</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.button}
               onPress={() => this.props.navigation.navigate('namesScreen')}>
-              <Image
-                source={require('./picture/child_care-24px.png')}
+              <MaterialIcons
                 style={styles.Img}
+                name="child-care"
+                color="#00000080"
+                size={30}
               />
               <Text style={styles.texta}>Хүүхдэд нэр өгөх</Text>
             </TouchableOpacity>
@@ -83,47 +95,52 @@ export default class ToolsScreen extends React.Component {
             <TouchableOpacity
               style={styles.button}
               onPress={() => this.props.navigation.navigate('jinScreen')}>
-              <Image
-                source={require('./picture/insert_chart-24px.png')}
+              <MaterialIcons
                 style={styles.Img}
+                name="insert-chart"
+                color="#00000080"
+                size={30}
               />
               <Text style={styles.texta}>Биеийн жингийн хяналт</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.button}
               onPress={() => this.props.navigation.navigate('tsagScreen')}>
-              <Image
-                source={require('./picture/local_hospital-24px.png')}
+              <MaterialIcons
                 style={styles.Img}
+                name="local-hospital"
+                color="#00000080"
+                size={30}
               />
               <Text style={styles.texta}>Төрөхийн базлалтаа хянах</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.button}
               onPress={() => this.props.navigation.navigate('namesScreen')}>
-              <Image
-                source={require('./picture/help-24px.png')}
+              <MaterialIcons
                 style={styles.Img}
+                name="help"
+                color="#00000080"
+                size={30}
               />
               <Text style={styles.texta}>Тусламж</Text>
             </TouchableOpacity>
           </View>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignContent: 'stretch',
     flexDirection: 'row',
-    backgroundColor: '#F4F4F4',
+    backgroundColor: '#f4f4f4',
   },
 
   header: {
-   // backgroundColor: 'red',
+    backgroundColor: '#f4f4f4',
     flexDirection: 'row',
     height: 50,
     alignItems: 'center',
@@ -132,9 +149,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginLeft: '5%',
     marginBottom: '5%',
+    color:'#00000090'
   },
   redView: {
-    //backgroundColor: 'red',
     flex: 1,
     height: Dimensions.get('window').height,
     justifyContent: 'center',
@@ -142,7 +159,6 @@ const styles = StyleSheet.create({
     marginTop: '-13%',
   },
   greenView: {
-    // backgroundColor: 'green',
     flex: 1,
     alignContent: 'stretch',
     height: Dimensions.get('window').height,
@@ -152,9 +168,9 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: '10%',
-    borderRadius: 10,
-    width: '80%',
-    height: '25%',
+    borderRadius: 8,
+    width: wp('40%'),
+    height: wp('40%'),
     backgroundColor: '#FFFFFF',
     elevation: 1,
     justifyContent: 'flex-end',
@@ -163,6 +179,5 @@ const styles = StyleSheet.create({
     marginLeft: '5%',
     position: 'absolute',
     top: '5%',
-    left: '0%',
   },
 });

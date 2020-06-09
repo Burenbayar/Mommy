@@ -16,7 +16,7 @@ export default class BeltgelScreen extends React.Component {
   constructor() {
     super();
   }
-
+  
   renderItem = ({item}) => {
     return (
       <View style={{flex: 1, flexDirection: 'row', marginBottom: 3}}>

@@ -10,7 +10,13 @@ import {
 } from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
 import {ActionSheet, Root} from 'native-base';
+import LinearGradient from 'react-native-linear-gradient';
 
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+const numColumns = 2;
 const width = Dimensions.get('window').width;
 export default class VideoScreen extends Component {
   constructor(props) {
@@ -118,7 +124,7 @@ export default class VideoScreen extends Component {
   }
 
   render() {
-    const {content, btnPressStyle} = styles;
+    const {content} = styles;
     let {fileList} = this.state;
     return (
       <Root>
@@ -129,12 +135,27 @@ export default class VideoScreen extends Component {
             renderItem={this.renderItem}
             keyExtractor={(item, index) => index.toString()}
             extraData={this.state}
+            numColumns={numColumns}
           />
-          <TouchableOpacity
+          <View style={styles.MainContainer}>
+            <TouchableOpacity
+              onPress={() => this.onClickAddPicture()}
+              style={{width: '80%'}}>
+              <LinearGradient
+                colors={['#F36227', '#EE227C']}
+                style={styles.LinearGradientStyle}
+                start={{x: 0, y: 0}}
+                end={{x: 1, y: 0.9}}
+                locations={[0, 1]}>
+                <Text style={styles.buttonText}>ЗУРАГ ОРУУЛАХ</Text>
+              </LinearGradient>
+            </TouchableOpacity>
+          </View>
+          {/* <TouchableOpacity
             style={btnPressStyle}
             onPress={() => this.onClickAddPicture()}>
             <Text style={{color: '#fff'}}>Бичлэг оруулах</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </Root>
     );
@@ -143,30 +164,47 @@ export default class VideoScreen extends Component {
 
 const styles = StyleSheet.create({
   content: {
-    paddingLeft: 30,
-    paddingRight: 30,
-    marginTop: 50,
-    marginBottom: 30,
+    backgroundColor: '#F4F4F4',
     flex: 1,
-    alignItems: 'center',
+    alignContent: 'center',
+    height: width / numColumns,
   },
   itemViewImage: {
+    backgroundColor: '#F4F4F4',
+
     alignItems: 'center',
     borderRadius: 8,
-    marginTop: 10,
+   
   },
   itemImage: {
-    backgroundColor: '#2F455C',
-    height: 150,
-    width: width - 60,
+    //backgroundColor: '#2F455C',
+    width: wp('46%'),
+    height: wp('46%'),
     borderRadius: 8,
     resizeMode: 'contain',
   },
-  btnPressStyle: {
-    backgroundColor: '#0080ff',
+  MainContainer: {
+    height: '23%',
+    backgroundColor: '#F4F4F4',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  buttonText: {
+    fontSize: 14,
+    color: '#fff',
+    backgroundColor: 'transparent',
+  },
+  LinearGradientStyle: {
     height: 50,
-    width: width - 60,
+    borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
   },
+  //   btnPressStyle: {
+  //     backgroundColor: '#0080ff',
+  //     height: 50,
+  //     width: width - 60,
+  //     alignItems: 'center',
+  //     justifyContent: 'center',
+  //   },
 });

@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import {
   View,
   TextInput,
-  Modal,
   Text,
   StyleSheet,
   TouchableOpacity,
   ScrollView,
   Button,
 } from 'react-native';
-
+import Modal from 'react-native-modal';
+import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -18,6 +18,7 @@ export default class NamesScreen extends React.Component {
     super(props);
     this.state = {
       text: '',
+      ner: '',
       nerList: [''],
       show: false,
     };
@@ -30,104 +31,140 @@ export default class NamesScreen extends React.Component {
     prev.nerList.push(this.state.text);
     this.setState({prev});
   };
+  Random = () => {
+    var RandomName =
+      Math.floor(Math.random() * (this.state.nerList.length - 1)) + 1;
+    this.setState({
+      ner: RandomName,
+    });
+  };
   static navigationOptions = {
     header: false,
   };
   render() {
     return (
-      <ScrollView>
-        <View style={styles.bg}>
-          <View style={styles.header}>
-            <TouchableOpacity
-              style={{marginLeft: '5%'}}
-              onPress={() => this.props.navigation.navigate('Хэрэгсэл')}>
-              <Ionicons name="ios-arrow-back" color="#00000050" size={30} />
-            </TouchableOpacity>
-            <View>
-              <Text
-                style={{
-                  fontSize: 22,
-                  fontWeight: 'bold',
-                  fontFamily: 'roboto',
-                  marginLeft: 10,
-                }}>
-                НЭР ӨГӨХ
-              </Text>
-            </View>
-            <TouchableOpacity
-              onPress={() => {
-                this.setState({show: true});
-              }}>
-              <View
-                style={{
-                  flex: 1,
-                  alignItems: 'flex-end',
-                  justifyContent: 'center',
-                  marginRight: 10,
-                }}>
-                <MaterialIcons name="add" color="#00000050" size={30} />
-              </View>
-            </TouchableOpacity>
-          </View>
+      <View style={{flex:1}}>
+        <View style={styles.header}>
+          <TouchableOpacity
+            style={{marginLeft: '5%'}}
+            onPress={() => this.props.navigation.navigate('Хэрэгсэл')}>
+            <Ionicons name="ios-arrow-back" color="#00000050" size={30} />
+          </TouchableOpacity>
           <View>
-            <View>
-              {this.state.nerList.map((e, i) => {
-                if (i == 0) return <View />;
-                else
-                  return (
-                    <View style={{flexDirection: 'row', margin: 10}}>
-                      <View style={styles.numbers}>
-                        <Text key={i}>{i}</Text>
-                      </View>
-                      <View style={styles.ners}>
-                        <Text key={e}>{e}</Text>
-                        <View>
-                          <MaterialIcons
-                            name="clear"
-                            color="#00000050"
-                            size={30}
-                          />
+            <Text
+              style={{
+                fontSize: 22,
+                fontWeight: 'bold',
+                fontFamily: 'roboto',
+                marginLeft: 10,
+              }}>
+              НЭР ӨГӨХ
+            </Text>
+          </View>
+          <TouchableOpacity
+            onPress={() => {
+              this.setState({show: true});
+            }}>
+            <View
+              style={{
+                flex: 1,
+                alignItems: 'flex-end',
+                justifyContent: 'center',
+                marginRight: 10,
+              }}>
+              <MaterialIcons name="add" color="#00000050" size={30} />
+            </View>
+          </TouchableOpacity>
+        </View>
+        <ScrollView>
+              <View>
+                {this.state.nerList.map((e, i) => {
+                  if (i == 0) return <View />;
+                  else
+                    return (
+                      <View style={{flexDirection: 'row', margin: 10}}>
+                        <View style={styles.numbers}>
+                          <Text Key={i}>{i}</Text>
+                        </View>
+                        <View style={styles.ners}>
+                          <Text Key={e}>{e}</Text>
+                          <View>
+                            <MaterialIcons
+                              name="clear"
+                              color="#00000050"
+                              size={30}
+                            />
+                          </View>
                         </View>
                       </View>
-                    </View>
-                  );
-              })}
-            </View>
-            <Modal transparent={true} visible={this.state.show}>
-              <View style={styles.modal}>
-                <View style={styles.nertext}>
-                  <TextInput
-                    placeholder="Нэр бичих"
-                    style={{
-                      backgroundColor: '#F4F4F4',
-                      borderRadius: 30,
-                      width: '80%',
-                      height: 40,
-                    }}
-                    onChangeText={(e) => this.textChange(e)}
-                  />
-                  <Ionicons
-                    name="md-send"
-                    color="#00000050"
-                    size={30}
-                    onPress={() => {
-                      this.addName();
-                      this.setState({show: false});
-                    }}></Ionicons>
-                </View>
+                    );
+                })}
               </View>
-            </Modal>
-          </View>
+              <Modal transparent={true} isVisible={this.state.show}>
+                <View style={styles.modal}>
+                  <View style={styles.nertext}>
+                    <TextInput
+                      placeholder="Нэр бичих"
+                      style={{
+                        backgroundColor: '#f4f4f4',
+                        borderRadius: 30,
+                        width: '80%',
+                        height: 40,
+                      }}
+                      onChangeText={(e) => this.textChange(e)}
+                    />
+                    <Ionicons
+                      style={{backgroundColor: '#ffffff'}}
+                      name="md-send"
+                      color="#00000050"
+                      size={30}
+                      onPress={() => {
+                        this.addName();
+                        this.setState({show: false});
+                      }}></Ionicons>
+                  </View>
+                </View>
+              </Modal>
+        </ScrollView>
+        <View style={styles.MainContainer}>
+          <Text> {this.state.nerList[this.state.ner]} </Text>
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={this.Random}
+            style={{width: '80%'}}>
+            <LinearGradient
+              colors={['#F36227', '#EE227C']}
+              style={styles.LinearGradientStyle}
+              start={{x: 0, y: 0}}
+              end={{x: 1, y: 0.9}}
+              locations={[0, 1]}>
+              <Text style={styles.buttonText}>НЭР СОНГОХ</Text>
+            </LinearGradient>
+          </TouchableOpacity>
         </View>
-
-        {/* <Button color=("#EE227C","#F36227") onPress={()=>{null}} title='Нэр сонгох'>
-        </Button> */}
-      </ScrollView>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  MainContainer: {
+    height:'23%',
+    backgroundColor:'#f4f4f4',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  LinearGradientStyle: {
+    height: 50,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    fontSize: 14,
+    color: '#fff',
+    backgroundColor: 'transparent',
+  },
   keyb: {
     flex: 1,
     alignItems: 'center',
@@ -138,7 +175,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   nertext: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#ffffff',
     marginRight: 10,
     marginLeft: 10,
     padding: 20,
@@ -149,7 +186,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   numbers: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#ffffff',
     height: 50,
     width: '17%',
     borderRadius: 10,
@@ -159,7 +196,7 @@ const styles = StyleSheet.create({
   },
   ners: {
     flexDirection: 'row',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#ffffff',
     height: 50,
     width: '80%',
     borderRadius: 10,
@@ -170,16 +207,10 @@ const styles = StyleSheet.create({
     elevation: 1,
     fontSize: 14,
   },
-  bg: {
-    flex: 1,
-    backgroundColor: '#F4F4F4',
-    flexDirection: 'column',
-  },
   header: {
-    flex: 1,
     flexDirection: 'row',
-    height: 60,
-    backgroundColor: '#F4F4F4',
+    height:'10%',
+    backgroundColor: '#f4f4f4',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
