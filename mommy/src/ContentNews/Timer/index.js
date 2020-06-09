@@ -11,7 +11,7 @@ const Timer = (props) => (
     <CountdownCircleTimer
       isPlaying={props.readCheck}
       duration={15}
-      size={30}
+      size={wp('8.1%')}
       strokeLinecap={0}
       trailColor="transparent"
       strokeWidth={3}
@@ -24,7 +24,7 @@ const Timer = (props) => (
           alignSelf: 'center',
         }}
         name="heart-circle"
-        size={wp('7%')}
+        size={wp('6.5%')}
         color="#FA3D5A"></MaterialIcon>
     </CountdownCircleTimer>
   </View>

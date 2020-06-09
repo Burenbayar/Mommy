@@ -11,6 +11,7 @@ import tools from '../../tools/index';
 import Lavlah from '../../Lavlah/Lavlah/Lavlah';
 import BaiguulgaPro from '../../Lavlah/BaiguulgaPro';
 import DrawContent from './DrawContent';
+import HospitalInfo from '../../Lavlah/HospitalInfo';
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -197,7 +198,13 @@ const HomeStack = createStackNavigator({
   BaiguulgaPro: {
     screen: BaiguulgaPro,
     navigationOptions: {
-      header: true,
+      header: false,
+    },
+  },
+  HospitalInfo: {
+    screen: HospitalInfo,
+    navigationOptions: {
+      header: false,
     },
   },
 });
