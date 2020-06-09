@@ -46,13 +46,13 @@ class BaiguulgaPro extends React.Component {
                     </View>
                     <View style={styles.iconspace}>
                       <TouchableOpacity style={styles.icon}>
-                        <Icon size={wp('9%')} name='md-information-circle' size={18} color="grey"/>
+                        <Icon size={wp('6%')} name='md-information-circle' color="grey"/>
                       </TouchableOpacity>
                       <TouchableOpacity style={styles.icon}>
-                        <Icon size={wp('9%')} name="md-heart" size={18} color="#FA3D5A" />
+                        <Icon size={wp('6%')} name="md-heart" color="#FA3D5A" />
                       </TouchableOpacity>
                       <TouchableOpacity style={styles.icon}>
-                        <Icon size={wp('9%')} name="md-send" size={18} color="grey" />
+                        <Icon size={wp('6%')} name="md-send" color="grey" />
                       </TouchableOpacity>
                     </View>
                   </View>
@@ -60,9 +60,7 @@ class BaiguulgaPro extends React.Component {
               </View>
           </View>
           <View style={styles.Body}>
-              <View style={styles.Data}>
-                <NewsComponent/>
-              </View>
+              <NewsComponent/>
           </View>
       </ScrollView>
     );
@@ -71,7 +69,7 @@ class BaiguulgaPro extends React.Component {
 const styles = StyleSheet.create({
   BackImg:{
       width: wp('100%'),
-      height: wp('55.7%'),
+      height: wp('44.5%'),
   },
   back:{
       position:'absolute',
@@ -89,14 +87,14 @@ const styles = StyleSheet.create({
     position: 'absolute',
     flexDirection: "row",
     bottom: 0,
-    marginBottom: wp('6.3%'),
+    marginBottom: wp('2.4%'),
   },
   Header:{
     marginHorizontal: wp('2.4%'),
     backgroundColor: 'white',
     borderBottomRightRadius: wp('3.7%'),
     borderBottomLeftRadius: wp('3.7%'),
-    height:wp('14.1%'),
+    height:wp('11%'),
   },
   PImg:{
     width: wp('18.6%'),
@@ -131,19 +129,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   Body:{
-      backgroundColor: 'white',
-      borderRadius: 20,
+      marginTop: wp('2%')
   },
   iconspace:{
-    marginLeft: wp('30%'),
+    marginLeft: wp('27%'),
     flexDirection: 'row',
-    marginBottom: wp('-1%'),
+    paddingTop: wp('1%')
   },
   icon:{
     marginLeft: wp('3%')
-  },
-  Data:{
-
   },
 });
 export default BaiguulgaPro;

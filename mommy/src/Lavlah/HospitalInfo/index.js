@@ -39,7 +39,7 @@ class hospitalInfo extends React.Component {
                 </View>
                 <View style={styles.Body}>
                     <View style={styles.Data}>
-
+                        
                     </View>
                 </View>
             </ScrollView>
